@@ -2,7 +2,7 @@
 
 :root {
   /* Sizes */
-  --content-width: 680px;
+  --search-width: 680px;
   --header-height: 60px;
   --hash-offset: calc(var(--header-height) * 1.67);
   --sidebar-width: 240px;
@@ -160,7 +160,7 @@ p code {
   margin-left: var(--sidebar-width);
   padding: calc(var(--header-height) + var(--gap)) var(--gap) 0 var(--gap);
   width: calc(100% - var(--sidebar-width));
-  max-width: var(--content-width);
+  max-width: 100%;
 }
 
 .content img {
@@ -636,7 +636,7 @@ body.theme-dark {
   .search-input-wrap {
     position: absolute;
     width: 100%;
-    max-width: calc(var(--content-width) - var(--gap) - var(--gap));
+    max-width: calc(var(--search-width) - var(--gap) - var(--gap));
     height: 100% !important;
     border-radius: 0;
     box-shadow: none;
@@ -712,7 +712,7 @@ body.theme-dark {
 @media (min-width: 919px) {
   .search-results {
     top: 100%;
-    width: calc(var(--content-width) - var(--gap) - var(--gap));
+    width: calc(var(--search-width) - var(--gap) - var(--gap));
     max-height: calc(100vh - 200%) !important;
   }
 }
@@ -936,7 +936,7 @@ body.theme-dark {
 
 @media (min-width: 919px) {
   .search-active .search-input-wrap {
-    width: calc(var(--content-width) - var(--gap) - var(--gap));
+    width: calc(var(--search-width) - var(--gap) - var(--gap));
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
   }
 }

@@ -6,7 +6,7 @@
     <title>aiken/transaction/value - stdlib</title>
     <meta name="theme-color" content="#eff1f5" media="(prefers-color-scheme: light)"/>
     <meta name="theme-color" content="#1e1e2e" media="(prefers-color-scheme: dark)"/>
-    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg"/>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../../favicon.svg"/>
     <link rel="stylesheet" href="../../css/index.css?v=0.0.26" type="text/css"/>
     <link id="syntax-theme" rel="stylesheet" href="../../css/atom-one-light.min.css?v=0.0.26"/>
   </head>
@@ -421,9 +421,7 @@ possible to mint Ada!).</p>
       -->
       
     </div>
-    <pre><code class="hljs aiken">flatten(value: AssocList&lt;ByteArray, AssocList&lt;ByteArray, Int&gt;&gt;) -&gt; List&lt;
-  #(ByteArray, ByteArray, Int),
-&gt;</code></pre>
+    <pre><code class="hljs aiken">flatten(value: AssocList&lt;ByteArray, AssocList&lt;ByteArray, Int&gt;&gt;) -&gt; List&lt;#(ByteArray, ByteArray, Int)&gt;</code></pre>
     <div class="rendered-markdown"><p>Flatten a value as list of 3-tuple (PolicyId, AssetName, Quantity).</p>
 <p>Handy to manipulate values as uniform lists.</p>
 </div>
@@ -444,10 +442,7 @@ possible to mint Ada!).</p>
       -->
       
     </div>
-    <pre><code class="hljs aiken">from_asset(policy_id: ByteArray, asset_name: ByteArray, quantity: Int) -&gt; AssocList&lt;
-  ByteArray,
-  AssocList&lt;ByteArray, Int&gt;,
-&gt;</code></pre>
+    <pre><code class="hljs aiken">from_asset(policy_id: ByteArray, asset_name: ByteArray, quantity: Int) -&gt; AssocList&lt;ByteArray, AssocList&lt;ByteArray, Int&gt;&gt;</code></pre>
     <div class="rendered-markdown"><p>Construct a ‘Value’ from an asset identifier (i.e. <code>PolicyId</code> + <code>AssetName</code>)
 and a given quantity.</p>
 </div>
@@ -570,8 +565,8 @@ and a given quantity.</p>
       hljs.highlightAll();
     </script>
     <script src="../../js/lunr.min.js?v=0.0.26"></script>
-    <script src="../../js/index.js?v=1671244714"></script>
+    <script src="../../js/index.js?v=1671246644"></script>
     <!-- Load the search index using JSONP to avoid CORS issues -->
-    <script src="../../search-data.js?v=1671244714"></script>
+    <script src="../../search-data.js?v=1671246644"></script>
   </body>
 </html>

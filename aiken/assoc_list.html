@@ -6,7 +6,7 @@
     <title>aiken/assoc_list - stdlib</title>
     <meta name="theme-color" content="#eff1f5" media="(prefers-color-scheme: light)"/>
     <meta name="theme-color" content="#1e1e2e" media="(prefers-color-scheme: dark)"/>
-    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg"/>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg"/>
     <link rel="stylesheet" href="../css/index.css?v=0.0.26" type="text/css"/>
     <link id="syntax-theme" rel="stylesheet" href="../css/atom-one-light.min.css?v=0.0.26"/>
   </head>
@@ -597,10 +597,7 @@ pub fn celebrate_birthday(m: AssocList&lt;String, Int&gt;, key: String) {
       -->
       
     </div>
-    <pre><code class="hljs aiken">union(left left: AssocList&lt;a, b&gt;, right right: AssocList&lt;a, b&gt;) -&gt; AssocList&lt;
-  a,
-  b,
-&gt;</code></pre>
+    <pre><code class="hljs aiken">union(left left: AssocList&lt;a, b&gt;, right right: AssocList&lt;a, b&gt;) -&gt; AssocList&lt;a, b&gt;</code></pre>
     <div class="rendered-markdown"><p>Combine two maps. If the same key exist in both the left and right maps,
 values from the left are preferred (i.e. left-biaised).</p>
 </div>
@@ -621,11 +618,7 @@ values from the left are preferred (i.e. left-biaised).</p>
       -->
       
     </div>
-    <pre><code class="hljs aiken">union_with(left left: AssocList&lt;a, b&gt;, right right: AssocList&lt;a, b&gt;, with with: fn(
-    a,
-    b,
-    b,
-  ) -&gt; b) -&gt; AssocList&lt;a, b&gt;</code></pre>
+    <pre><code class="hljs aiken">union_with(left left: AssocList&lt;a, b&gt;, right right: AssocList&lt;a, b&gt;, with with: fn(a, b, b) -&gt; b) -&gt; AssocList&lt;a, b&gt;</code></pre>
     <div class="rendered-markdown"><p>Combine two maps using the provided strategy for combining values when the same
 key is found in both maps.</p>
 </div>
@@ -706,8 +699,8 @@ key is found in both maps.</p>
       hljs.highlightAll();
     </script>
     <script src="../js/lunr.min.js?v=0.0.26"></script>
-    <script src="../js/index.js?v=1671244714"></script>
+    <script src="../js/index.js?v=1671246644"></script>
     <!-- Load the search index using JSONP to avoid CORS issues -->
-    <script src="../search-data.js?v=1671244714"></script>
+    <script src="../search-data.js?v=1671246644"></script>
   </body>
 </html>

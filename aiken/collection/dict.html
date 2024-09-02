@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>aiken/interval - aiken-lang/stdlib</title>
+    <title>aiken/collection/dict - aiken-lang/stdlib</title>
     <meta name="theme-color" content="#eff1f5" media="(prefers-color-scheme: light)"/>
     <meta name="theme-color" content="#1e1e2e" media="(prefers-color-scheme: dark)"/>
-    <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg"/>
-    <link rel="stylesheet" href="../css/index.css?v=1.1.0" type="text/css"/>
-    <link id="syntax-theme" rel="stylesheet" href="../css/atom-one-light.min.css?v=1.1.0"/>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../../favicon.svg"/>
+    <link rel="stylesheet" href="../../css/index.css?v=1.1.0" type="text/css"/>
+    <link id="syntax-theme" rel="stylesheet" href="../../css/atom-one-light.min.css?v=1.1.0"/>
   </head>
   <body class="prewrap-off theme-light drawer-closed">
     <script>
       "use strict";
-      window.breadcrumbs = '..';
+      window.breadcrumbs = '../..';
       const aikenConfig = {
         theme: {
           values: (() => {
@@ -118,7 +118,7 @@
       </button>
 
       <h2>
-        <a href="../">stdlib</a>
+        <a href="../../">stdlib</a>
         <span id="project-version">
           <span>main </span>
         </span>
@@ -191,11 +191,7 @@
 <h2>Types</h2>
 <ul>
   
-  <li><a href="#Interval">Interval</a></li>
-  
-  <li><a href="#IntervalBound">IntervalBound</a></li>
-  
-  <li><a href="#IntervalBoundType">IntervalBoundType</a></li>
+  <li><a href="#Dict">Dict</a></li>
   
 </ul>
 
@@ -205,8 +201,6 @@
 <ul>
   
   <li><a href="#empty">empty</a></li>
-  
-  <li><a href="#everything">everything</a></li>
   
 </ul>
 
@@ -220,32 +214,17 @@
     
   
     
-        <li><a href="#after">after</a></li>
+        <li><a href="#from_ascending_pairs">from_ascending_pairs</a></li>
 
       
   
     
-        <li><a href="#entirely_after">entirely_after</a></li>
+        <li><a href="#from_ascending_pairs_with">from_ascending_pairs_with</a></li>
 
       
   
     
-        <li><a href="#before">before</a></li>
-
-      
-  
-    
-        <li><a href="#entirely_before">entirely_before</a></li>
-
-      
-  
-    
-        <li><a href="#between">between</a></li>
-
-      
-  
-    
-        <li><a href="#entirely_between">entirely_between</a></li>
+        <li><a href="#from_pairs">from_pairs</a></li>
 
       
   
@@ -254,7 +233,17 @@
     
   
     
-        <li><a href="#contains">contains</a></li>
+        <li><a href="#find">find</a></li>
+
+      
+  
+    
+        <li><a href="#get">get</a></li>
+
+      
+  
+    
+        <li><a href="#has_key">has_key</a></li>
 
       
   
@@ -264,12 +253,46 @@
       
   
     
-        <li><a href="#is_entirely_after">is_entirely_after</a></li>
+        <li><a href="#keys">keys</a></li>
 
       
   
     
-        <li><a href="#is_entirely_before">is_entirely_before</a></li>
+        <li><a href="#size">size</a></li>
+
+      
+  
+    
+        <li><a href="#values">values</a></li>
+
+      
+  
+    
+        <li data-heading="2"><a href="#Modifying">Modifying</a></li>
+    
+  
+    
+        <li><a href="#delete">delete</a></li>
+
+      
+  
+    
+        <li><a href="#filter">filter</a></li>
+
+      
+  
+    
+        <li><a href="#insert">insert</a></li>
+
+      
+  
+    
+        <li><a href="#insert_with">insert_with</a></li>
+
+      
+  
+    
+        <li><a href="#map">map</a></li>
 
       
   
@@ -278,22 +301,31 @@
     
   
     
-        <li><a href="#hull">hull</a></li>
+        <li><a href="#union">union</a></li>
 
       
   
     
-        <li><a href="#intersection">intersection</a></li>
+        <li><a href="#union_with">union_with</a></li>
 
       
   
     
-        <li><a href="#max">max</a></li>
+        <li data-heading="2"><a href="#Transforming">Transforming</a></li>
+    
+  
+    
+        <li><a href="#foldl">foldl</a></li>
 
       
   
     
-        <li><a href="#min">min</a></li>
+        <li><a href="#foldr">foldr</a></li>
+
+      
+  
+    
+        <li><a href="#to_pairs">to_pairs</a></li>
 
       
   
@@ -310,7 +342,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/cbor.html">
+	      <li data-indent="1"><a href="../../aiken/cbor.html">
 	      cbor
 	      </a></li>
 	    
@@ -318,7 +350,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/collection.html">
+	      <li data-indent="1"><a href="../../aiken/collection.html">
 	      collection
 	      </a></li>
 	    
@@ -326,15 +358,15 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/collection/dict.html">
-	      dict
+	      <li data-indent="2" data-current><a href="../../aiken/collection/dict.html">
+	      <strong>dict</strong>
 	      </a></li>
 	    
 	  
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/collection/list.html">
+	      <li data-indent="2"><a href="../../aiken/collection/list.html">
 	      list
 	      </a></li>
 	    
@@ -342,7 +374,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/collection/pairs.html">
+	      <li data-indent="2"><a href="../../aiken/collection/pairs.html">
 	      pairs
 	      </a></li>
 	    
@@ -350,7 +382,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/crypto.html">
+	      <li data-indent="1"><a href="../../aiken/crypto.html">
 	      crypto
 	      </a></li>
 	    
@@ -358,15 +390,15 @@
         
 	  
 	    
-	      <li data-indent="1" data-current><a href="../aiken/interval.html">
-	      <strong>interval</strong>
+	      <li data-indent="1"><a href="../../aiken/interval.html">
+	      interval
 	      </a></li>
 	    
 	  
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/math.html">
+	      <li data-indent="1"><a href="../../aiken/math.html">
 	      math
 	      </a></li>
 	    
@@ -374,7 +406,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/math/rational.html">
+	      <li data-indent="2"><a href="../../aiken/math/rational.html">
 	      rational
 	      </a></li>
 	    
@@ -382,7 +414,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/option.html">
+	      <li data-indent="1"><a href="../../aiken/option.html">
 	      option
 	      </a></li>
 	    
@@ -394,7 +426,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/primitive/bytearray.html">
+	      <li data-indent="2"><a href="../../aiken/primitive/bytearray.html">
 	      bytearray
 	      </a></li>
 	    
@@ -402,7 +434,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/primitive/int.html">
+	      <li data-indent="2"><a href="../../aiken/primitive/int.html">
 	      int
 	      </a></li>
 	    
@@ -410,7 +442,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/primitive/string.html">
+	      <li data-indent="2"><a href="../../aiken/primitive/string.html">
 	      string
 	      </a></li>
 	    
@@ -422,7 +454,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/address.html">
+	      <li data-indent="1"><a href="../../cardano/address.html">
 	      address
 	      </a></li>
 	    
@@ -430,7 +462,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/assets.html">
+	      <li data-indent="1"><a href="../../cardano/assets.html">
 	      assets
 	      </a></li>
 	    
@@ -438,7 +470,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/certificate.html">
+	      <li data-indent="1"><a href="../../cardano/certificate.html">
 	      certificate
 	      </a></li>
 	    
@@ -446,7 +478,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/governance.html">
+	      <li data-indent="1"><a href="../../cardano/governance.html">
 	      governance
 	      </a></li>
 	    
@@ -454,7 +486,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../cardano/governance/protocol_parameters.html">
+	      <li data-indent="2"><a href="../../cardano/governance/protocol_parameters.html">
 	      protocol_parameters
 	      </a></li>
 	    
@@ -462,7 +494,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/script_context.html">
+	      <li data-indent="1"><a href="../../cardano/script_context.html">
 	      script_context
 	      </a></li>
 	    
@@ -470,7 +502,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/transaction.html">
+	      <li data-indent="1"><a href="../../cardano/transaction.html">
 	      transaction
 	      </a></li>
 	    
@@ -482,19 +514,18 @@
       <main class="content">
         
 <h1 id="module-name" class="module-name">
-  <a href="#module-name">aiken/interval</a>
+  <a href="#module-name">aiken/collection/dict</a>
 </h1>
-<p>In a eUTxO-based blockchain like Cardano, the management of time can be
-finicky.</p>
-<p>Indeed, in order to maintain a complete determinism in the execution of
-scripts, it is impossible to introduce a notion of <em>“current time”</em> since
-the execution would then depend on factor that are external to the
-transaction itself: the ineluctable stream of time flowing in our universe.</p>
-<p>Hence, to work around that, we typically define time intervals, which gives
-window – a.k.a intervals – within which the transaction can be executed.
-From within a script, it isn’t possible to know when exactly the script is
-executed, but we can reason about the interval bounds to validate pieces of
-logic.</p>
+<p>A module for working with bytearray dictionaries.</p>
+<blockquote class="markdown-alert-important">
+<p>Dictionaries are <strong>ordered sets</strong> of key-value pairs, which thus
+preserve some invariants. Specifically, each key is only present once in
+the dictionary and all keys are stored in ascending lexicographic order.</p>
+<p>These invariants allow for more optimized functions to operate on <code>Dict</code>,
+but as a trade-offs, prevent <code>Dict</code> from being serializable. To recover a <code>Dict</code>
+from an unknown <code>Data</code>, you must first recover an <code>Pairs&lt;k, v&gt;</code> and use
+<a href="#from_ascending_list"><code>dict.from_ascending_list</code></a>.</p>
+</blockquote>
 
 
 
@@ -506,130 +537,26 @@ logic.</p>
   
   <div class="member">
     <div class="member-name">
-      <h2 id="Interval">
-        <a href="#Interval">
-	  Interval&lt;a&gt;
+      <h2 id="Dict">
+        <a href="#Dict">
+	  Dict&lt;key, value&gt;
         </a>
       </h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L42-L45"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L30-L32"></a>
       
     </div>
     <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>A type to represent intervals of values. Interval are inhabited by a type
-<code>a</code> which is useful for non-infinite intervals that have a finite
-lower-bound and/or upper-bound.</p>
-<p>This allows to represent all kind of mathematical intervals:</p>
-<pre><code class="language-aiken">// [1; 10]
-let i0: Interval&lt;PosixTime&gt; = Interval
-  { lower_bound:
-      IntervalBound { bound_type: Finite(1), is_inclusive: True }
-  , upper_bound:
-      IntervalBound { bound_type: Finite(10), is_inclusive: True }
-  }
-</code></pre>
-<pre><code class="language-aiken">// (20; infinity)
-let i1: Interval&lt;PosixTime&gt; = Interval
-  { lower_bound:
-      IntervalBound { bound_type: Finite(20), is_inclusive: False }
-  , upper_bound:
-      IntervalBound { bound_type: PositiveInfinity, is_inclusive: False }
-  }
+      <div class="rendered-markdown"><p>An opaque <code>Dict</code>. The type is opaque because the module maintains some
+invariant, namely: there’s only one occurrence of a given key in the dictionary.</p>
+<p>Note that the <code>key</code> parameter is a phantom-type, and only present as a
+means of documentation. Keys can be any type, yet will need to comparable
+to use functions like <code>insert</code>.</p>
+<p>See for example:</p>
+<pre><code class="language-aiken">pub type Value =
+  Dict&lt;PolicyId, Dict&lt;AssetName, Int&gt;&gt;
 </code></pre>
 </div>
-      
-      <h3>Constructors</h3>
-      <ul class="constructor-list">
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">Interval { lower_bound: IntervalBound&lt;a&gt;, upper_bound: IntervalBound&lt;a&gt; }</code></pre>
-          </div>
-	  
-        </li>
-        
-      </ul>
-      
-    </div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="IntervalBound">
-        <a href="#IntervalBound">
-	  IntervalBound&lt;a&gt;
-        </a>
-      </h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L48-L51"></a>
-      
-    </div>
-    <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>An interval bound, either inclusive or exclusive.</p>
-</div>
-      
-      <h3>Constructors</h3>
-      <ul class="constructor-list">
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">IntervalBound { bound_type: IntervalBoundType&lt;a&gt;, is_inclusive: Bool }</code></pre>
-          </div>
-	  
-        </li>
-        
-      </ul>
-      
-    </div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="IntervalBoundType">
-        <a href="#IntervalBoundType">
-	  IntervalBoundType&lt;a&gt;
-        </a>
-      </h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L56-L60"></a>
-      
-    </div>
-    <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>A type of interval bound. Where finite, a value of type <code>a</code> must be
-provided. <code>a</code> will typically be an <code>Int</code>, representing a number of seconds or
-milliseconds.</p>
-</div>
-      
-      <h3>Constructors</h3>
-      <ul class="constructor-list">
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">NegativeInfinity</code></pre>
-          </div>
-	  
-        </li>
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">Finite(a)</code></pre>
-          </div>
-	  
-        </li>
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">PositiveInfinity</code></pre>
-          </div>
-	  
-        </li>
-        
-      </ul>
       
     </div>
   </div>
@@ -646,28 +573,13 @@ milliseconds.</p>
   
   <div class="member">
     <div class="member-name">
-      <h2 id="empty"><pre class="hljs language-aiken">empty: Interval&lt;a&gt;</pre></h2>
+      <h2 id="empty"><pre class="hljs language-aiken">empty: Dict&lt;a, b&gt;</pre></h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L196-L206"></a>
-      
-    </div>
-    <div class="rendered-markdown"><p>Create an empty interval that contains no value.</p>
-<pre><code class="language-aiken">interval.contains(empty, 0) == False
-interval.contains(empty, 1000) == False
-</code></pre>
-</div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="everything"><pre class="hljs language-aiken">everything: Interval&lt;a&gt;</pre></h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L214-L224"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L40-L40"></a>
       
     </div>
-    <div class="rendered-markdown"><p>Create an interval that contains every possible values. i.e. (-INF, +INF)</p>
-<pre><code class="language-aiken">interval.contains(everything, 0) == True
-interval.contains(everything, 1000) == True
+    <div class="rendered-markdown"><p>An empty dictionnary.</p>
+<pre><code class="language-aiken">dict.to_pairs(dict.empty) == []
 </code></pre>
 </div>
   </div>
@@ -690,16 +602,46 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="after"><pre class="hljs language-aiken">after(lower_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="from_ascending_pairs"><pre class="hljs language-aiken">from_ascending_pairs(xs: Pairs&lt;ByteArray, value&gt;) -&gt; Dict&lt;key, value&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L72-L83"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L71-L74"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values greater than the given bound. i.e [lower_bound, +INF)</p>
-<pre><code class="language-aiken">interval.after(10) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: PositiveInfinity, is_inclusive: True },
-}
+        <div class="rendered-markdown"><p>Like <a href="#from_pairs">‘from_pairs’</a>, but from an already sorted list by ascending
+keys. This function fails (i.e. halt the program execution) if the list isn’t
+sorted.</p>
+<pre><code class="language-aiken">let pairs = [Pair("a", 100), Pair("b", 200), Pair("c", 300)]
+
+let result =
+  dict.from_ascending_pairs(pairs)
+    |&gt; dict.to_pairs()
+
+result == [Pair("a", 100), Pair("b", 200), Pair("c", 300)]
+</code></pre>
+<p>This is meant to be used to turn a list constructed off-chain into a <code>Dict</code>
+which has taken care of maintaining interval invariants. This function still
+performs a sanity check on all keys to avoid silly mistakes. It is, however,
+considerably faster than <a href="from_pairs">‘from_pairs’</a></p>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="from_ascending_pairs_with"><pre class="hljs language-aiken">from_ascending_pairs_with(
+  xs: Pairs&lt;ByteArray, value&gt;,
+  predicate: fn(value) -&gt; Bool,
+) -&gt; Dict&lt;key, value&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L97-L103"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Like <a href="#from_ascending_pairs"><code>from_ascending_pairs</code></a> but fails if <strong>any</strong>
+value doesn’t satisfy the predicate.</p>
+<pre><code class="language-aiken">let pairs = [Pair("a", 100), Pair("b", 200), Pair("c", 300)]
+
+dict.from_ascending_pairs_with(pairs, fn(x) { x &lt;= 250 }) // fail
 </code></pre>
 </div>
       </div>
@@ -708,88 +650,20 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="entirely_after"><pre class="hljs language-aiken">entirely_after(lower_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="from_pairs"><pre class="hljs language-aiken">from_pairs(self: Pairs&lt;ByteArray, value&gt;) -&gt; Dict&lt;key, value&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L93-L104"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values after (and not including) the given bound. i.e (lower_bound, +INF)</p>
-<pre><code class="language-aiken">interval.entirely_after(10) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-  upper_bound: IntervalBound { bound_type: PositiveInfinity, is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="before"><pre class="hljs language-aiken">before(upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L114-L125"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L156-L158"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values before (and including) the given bound. i.e (-INF, upper_bound]</p>
-<pre><code class="language-aiken">interval.before(100) == Interval {
-  lower_bound: IntervalBound { bound_type: NegativeInfinity, is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="entirely_before"><pre class="hljs language-aiken">entirely_before(upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L135-L146"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values before (and not including) the given bound. i.e (-INF, upper_bound)</p>
-<pre><code class="language-aiken">interval.entirely_before(10) == Interval {
-  lower_bound: IntervalBound { bound_type: NegativeInfinity, is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="between"><pre class="hljs language-aiken">between(lower_bound: a, upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L156-L167"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values between two bounds, including the bounds. i.e. [lower_bound, upper_bound]</p>
-<pre><code class="language-aiken">interval.between(10, 100) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="entirely_between"><pre class="hljs language-aiken">entirely_between(lower_bound: a, upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L177-L188"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values between two bounds, excluding the bounds. i.e. (lower_bound, upper_bound)</p>
-<pre><code class="language-aiken">interval.entirely_between(10, 100) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: False },
-}
+        <div class="rendered-markdown"><p>Construct a dictionary from a list of key-value pairs. Note that when a key is present
+multiple times, the first occurrence prevails.</p>
+<pre><code class="language-aiken">let pairs = [Pair("a", 100), Pair("c", 300), Pair("b", 200)]
+
+let result =
+  dict.from_pairs(pairs)
+    |&gt; dict.to_pairs()
+
+result == [Pair("a", 100), Pair("b", 200), Pair("c", 300)]
 </code></pre>
 </div>
       </div>
@@ -804,28 +678,20 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="contains"><pre class="hljs language-aiken">contains(self: Interval&lt;Int&gt;, elem: Int) -&gt; Bool</pre></h2>
+          <h2 id="find"><pre class="hljs language-aiken">find(self: Dict&lt;key, value&gt;, value: value) -&gt; Option&lt;ByteArray&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L248-L274"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L214-L216"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Checks whether an element is contained within the interval.</p>
-<pre><code class="language-aiken">let iv =
-  Interval {
-    lower_bound: IntervalBound {
-      bound_type: Finite(14),
-      is_inclusive: True
-    },
-    upper_bound: IntervalBound {
-      bound_type: Finite(42),
-      is_inclusive: False
-    },
-  }
+        <div class="rendered-markdown"><p>Finds a value in the dictionary, and returns the first key found to have that value.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: 42)
+    |&gt; dict.insert(key: "b", value: 14)
+    |&gt; dict.insert(key: "c", value: 42)
+    |&gt; dict.find(42)
 
-interval.contains(iv, 25) == True
-interval.contains(iv, 0) == False
-interval.contains(iv, 14) == True
-interval.contains(iv, 42) == False
+result == Some("a")
 </code></pre>
 </div>
       </div>
@@ -834,30 +700,18 @@ interval.contains(iv, 42) == False
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_empty"><pre class="hljs language-aiken">is_empty(self: Interval&lt;Int&gt;) -&gt; Bool</pre></h2>
+          <h2 id="get"><pre class="hljs language-aiken">get(self: Dict&lt;key, value&gt;, key: ByteArray) -&gt; Option&lt;value&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L358-L379"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L270-L272"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Tells whether an interval is empty; i.e. that is contains no value.</p>
-<pre><code class="language-aiken">let iv1 = interval.empty
+        <div class="rendered-markdown"><p>Get a value in the dict by its key.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: "Aiken")
+    |&gt; dict.get(key: "a")
 
-let iv2 = Interval {
-    lower_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-    upper_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-  }
-
-let iv3 = Interval {
-    lower_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-    upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: False },
-  }
-
-interval.is_empty(iv1) == True
-interval.is_empty(iv2) == True
-interval.is_empty(iv3) == False
-
-// Note: Two empty intervals are not necessarily equal.
-iv1 != iv2
+ result == Some("Aiken")
 </code></pre>
 </div>
       </div>
@@ -866,17 +720,19 @@ iv1 != iv2
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_entirely_after"><pre class="hljs language-aiken">is_entirely_after(self: Interval&lt;Int&gt;, point: Int) -&gt; Bool</pre></h2>
+          <h2 id="has_key"><pre class="hljs language-aiken">has_key(self: Dict&lt;key, value&gt;, key: ByteArray) -&gt; Bool</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L389-L399"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L354-L356"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Check whether the interval is entirely after the point “a”</p>
-<pre><code class="language-aiken">interval.is_entirely_after(interval.after(10), 5) == True
-interval.is_entirely_after(interval.after(10), 10) == False
-interval.is_entirely_after(interval.after(10), 15) == False
-interval.is_entirely_after(interval.between(10, 20), 30) == False
-interval.is_entirely_after(interval.between(10, 20), 5) == True</code></pre>
+        <div class="rendered-markdown"><p>Check if a key exists in the dictionary.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: "Aiken")
+    |&gt; dict.has_key("a")
+
+result == True
+</code></pre>
 </div>
       </div>
     
@@ -884,17 +740,211 @@ interval.is_entirely_after(interval.between(10, 20), 5) == True</code></pre>
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_entirely_before"><pre class="hljs language-aiken">is_entirely_before(self: Interval&lt;Int&gt;, point: Int) -&gt; Bool</pre></h2>
+          <h2 id="is_empty"><pre class="hljs language-aiken">is_empty(self: Dict&lt;key, value&gt;) -&gt; Bool</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L445-L455"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L403-L408"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Check whether the interval is entirely before the point “a”</p>
-<pre><code class="language-aiken">interval.is_entirely_before(interval.before(10), 15) == True
-interval.is_entirely_before(interval.before(10), 10) == False
-interval.is_entirely_before(interval.before(10), 5) == False
-interval.is_entirely_before(interval.between(10, 20), 30) == True
-interval.is_entirely_before(interval.between(10, 20), 5) == False</code></pre>
+        <div class="rendered-markdown"><p>Efficiently checks whether a dictionary is empty.</p>
+<pre><code class="language-aiken">dict.is_empty(dict.empty) == True
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="keys"><pre class="hljs language-aiken">keys(self: Dict&lt;key, value&gt;) -&gt; List&lt;ByteArray&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L426-L428"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Extract all the keys present in a given <code>Dict</code>.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert("a", 14)
+    |&gt; dict.insert("b", 42)
+    |&gt; dict.insert("a", 1337)
+    |&gt; dict.keys()
+
+result == ["a", "b"]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="size"><pre class="hljs language-aiken">size(self: Dict&lt;key, value&gt;) -&gt; Int</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L463-L465"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Return the number of key-value pairs in the dictionary.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert("a", 100)
+    |&gt; dict.insert("b", 200)
+    |&gt; dict.insert("c", 300)
+    |&gt; dict.size()
+
+result == 3
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="values"><pre class="hljs language-aiken">values(self: Dict&lt;key, value&gt;) -&gt; List&lt;value&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L505-L507"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Extract all the values present in a given <code>Dict</code>.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert("a", 14)
+    |&gt; dict.insert("b", 42)
+    |&gt; dict.insert("c", 1337)
+    |&gt; dict.values()
+
+result == [1337, 42]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      
+        <h2 id="Modifying" class="module-heading"><a href="#Modifying">Modifying</a></h3>
+      
+  
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="delete"><pre class="hljs language-aiken">delete(self: Dict&lt;key, value&gt;, key: ByteArray) -&gt; Dict&lt;key, value&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L544-L546"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Remove a key-value pair from the dictionary. If the key is not found, no changes are made.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: 100)
+    |&gt; dict.insert(key: "b", value: 200)
+    |&gt; dict.delete(key: "a")
+    |&gt; dict.to_pairs()
+
+result == [Pair("b", 200)]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="filter"><pre class="hljs language-aiken">filter(
+  self: Dict&lt;key, value&gt;,
+  with: fn(ByteArray, value) -&gt; Bool,
+) -&gt; Dict&lt;key, value&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L632-L637"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Keep only the key-value pairs that pass the given predicate.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: 100)
+    |&gt; dict.insert(key: "b", value: 200)
+    |&gt; dict.insert(key: "c", value: 300)
+    |&gt; dict.filter(fn(k, _v) { k != "a" })
+    |&gt; dict.to_pairs()
+
+result == [Pair("b", 200), Pair("c", 300)]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="insert"><pre class="hljs language-aiken">insert(self: Dict&lt;key, value&gt;, key: ByteArray, value: value) -&gt; Dict&lt;key, value&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L685-L691"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Insert a value in the dictionary at a given key. If the key already exists, its value is <strong>overridden</strong>. If you need ways to combine keys together, use (<code>insert_with</code>)[#insert_with].</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: 1)
+    |&gt; dict.insert(key: "b", value: 2)
+    |&gt; dict.insert(key: "a", value: 3)
+    |&gt; dict.to_pairs()
+
+result == [Pair("a", 3), Pair("b", 2)]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="insert_with"><pre class="hljs language-aiken">insert_with(
+  self: Dict&lt;key, value&gt;,
+  key: ByteArray,
+  value: value,
+  with: fn(ByteArray, value, value) -&gt; Option&lt;value&gt;,
+) -&gt; Dict&lt;key, value&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L751-L760"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Insert a value in the dictionary at a given key. When the key already exist, the provided
+merge function is called. The value existing in the dictionary is passed as the second argument
+to the merge function, and the new value is passed as the third argument.</p>
+<pre><code class="language-aiken">let sum =
+  fn (_k, a, b) { Some(a + b) }
+
+let result =
+  dict.empty
+    |&gt; dict.insert_with(key: "a", value: 1, with: sum)
+    |&gt; dict.insert_with(key: "b", value: 2, with: sum)
+    |&gt; dict.insert_with(key: "a", value: 3, with: sum)
+    |&gt; dict.to_pairs()
+
+result == [Pair("a", 4), Pair("b", 2)]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="map"><pre class="hljs language-aiken">map(self: Dict&lt;key, a&gt;, with: fn(ByteArray, a) -&gt; b) -&gt; Dict&lt;key, b&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L823-L825"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Apply a function to all key-value pairs in a Dict.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert("a", 100)
+    |&gt; dict.insert("b", 200)
+    |&gt; dict.insert("c", 300)
+    |&gt; dict.map(fn(_k, v) { v * 2 })
+    |&gt; dict.to_pairs()
+
+ result == [Pair("a", 200), Pair("b", 400), Pair("c", 600)]
+</code></pre>
 </div>
       </div>
     
@@ -908,23 +958,20 @@ interval.is_entirely_before(interval.between(10, 20), 5) == False</code></pre>
   
       <div class="member">
         <div class="member-name">
-          <h2 id="hull"><pre class="hljs language-aiken">hull(iv1: Interval&lt;Int&gt;, iv2: Interval&lt;Int&gt;) -&gt; Interval&lt;Int&gt;</pre></h2>
+          <h2 id="union"><pre class="hljs language-aiken">union(left: Dict&lt;key, value&gt;, right: Dict&lt;key, value&gt;) -&gt; Dict&lt;key, value&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L510-L515"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L867-L872"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Computes the smallest interval containing the two given intervals, if any</p>
-<pre><code class="language-aiken">let iv1 = between(0, 10)
-let iv2 = between(2, 14)
-hull(iv1, iv2) == between(0, 14)
+        <div class="rendered-markdown"><p>Combine two dictionaries. If the same key exist in both the left and
+right dictionary, values from the left are preferred (i.e. left-biaised).</p>
+<pre><code class="language-aiken">let left_dict = dict.from_pairs([Pair("a", 100), Pair("b", 200)])
+let right_dict = dict.from_pairs([Pair("a", 150), Pair("c", 300)])
 
-let iv1 = between(5, 10)
-let iv2 = before(0)
-hull(iv1, iv2) == before(10)
+let result =
+  dict.union(left_dict, right_dict) |&gt; dict.to_pairs()
 
-let iv1 = entirely_after(0)
-let iv2 = between(10, 42)
-hull(iv1, iv2) = entirely_after(0)
+result == [Pair("a", 100), Pair("b", 200), Pair("c", 300)]
 </code></pre>
 </div>
       </div>
@@ -933,23 +980,64 @@ hull(iv1, iv2) = entirely_after(0)
   
       <div class="member">
         <div class="member-name">
-          <h2 id="intersection"><pre class="hljs language-aiken">intersection(iv1: Interval&lt;Int&gt;, iv2: Interval&lt;Int&gt;) -&gt; Interval&lt;Int&gt;</pre></h2>
+          <h2 id="union_with"><pre class="hljs language-aiken">union_with(
+  left: Dict&lt;key, value&gt;,
+  right: Dict&lt;key, value&gt;,
+  with: fn(ByteArray, value, value) -&gt; Option&lt;value&gt;,
+) -&gt; Dict&lt;key, value&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L550-L555"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L936-L942"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Computes the largest interval contains in the two given intervals, if any.</p>
-<pre><code class="language-aiken">let iv1 = interval.between(0, 10)
-let iv2 = interval.between(2, 14)
-interval.intersection(iv1, iv2) == interval.between(2, 10)
+        <div class="rendered-markdown"><p>Like <a href="#union"><code>union</code></a> but allows specifying the behavior to adopt when a key is present
+in both dictionaries. The first value received correspond to the value in the left
+dictionnary, whereas the second argument corresponds to the value in the right dictionnary.</p>
+<p>When passing <code>None</code>, the value is removed and not present in the union.</p>
+<pre><code class="language-aiken">let left_dict = dict.from_pairs([Pair("a", 100), Pair("b", 200)])
+let right_dict = dict.from_pairs([Pair("a", 150), Pair("c", 300)])
 
-let iv1 = interval.entirely_before(10)
-let iv2 = interval.entirely_after(0)
-interval.intersection(iv1, iv2) == interval.entirely_between(0, 10)
+let result =
+  dict.union_with(
+    left_dict,
+    right_dict,
+    fn(_k, v1, v2) { Some(v1 + v2) },
+  )
+    |&gt; dict.to_pairs()
 
-let iv1 = interval.between(0, 1)
-let iv2 = interval.between(2, 3)
-interval.intersection(iv1, iv2) |&gt; interval.is_empty
+result == [Pair("a", 250), Pair("b", 200), Pair("c", 300)]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      
+        <h2 id="Transforming" class="module-heading"><a href="#Transforming">Transforming</a></h3>
+      
+  
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="foldl"><pre class="hljs language-aiken">foldl(
+  self: Dict&lt;key, value&gt;,
+  zero: result,
+  with: fn(ByteArray, value, result) -&gt; result,
+) -&gt; result</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L1012-L1018"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Fold over the key-value pairs in a dictionary. The fold direction follows keys
+in ascending order and is done from left-to-right.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: 100)
+    |&gt; dict.insert(key: "b", value: 200)
+    |&gt; dict.insert(key: "c", value: 300)
+    |&gt; dict.foldl(0, fn(_k, v, r) { v + r })
+
+result == 600
 </code></pre>
 </div>
       </div>
@@ -958,16 +1046,25 @@ interval.intersection(iv1, iv2) |&gt; interval.is_empty
   
       <div class="member">
         <div class="member-name">
-          <h2 id="max"><pre class="hljs language-aiken">max(left: IntervalBound&lt;Int&gt;, right: IntervalBound&lt;Int&gt;) -&gt; IntervalBound&lt;Int&gt;</pre></h2>
+          <h2 id="foldr"><pre class="hljs language-aiken">foldr(
+  self: Dict&lt;key, value&gt;,
+  zero: result,
+  with: fn(ByteArray, value, result) -&gt; result,
+) -&gt; result</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L603-L612"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L1052-L1058"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Return the highest bound of the two.</p>
-<pre><code class="language-aiken">let ib1 = IntervalBound { bound_type: Finite(0), is_inclusive: False }
-let ib2 = IntervalBound { bound_type: Finite(1), is_inclusive: False }
+        <div class="rendered-markdown"><p>Fold over the key-value pairs in a dictionary. The fold direction follows keys
+in ascending order and is done from right-to-left.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert(key: "a", value: 100)
+    |&gt; dict.insert(key: "b", value: 200)
+    |&gt; dict.insert(key: "c", value: 300)
+    |&gt; dict.foldr(0, fn(_k, v, r) { v + r })
 
-interval.max(ib1, ib2) == ib2
+result == 600
 </code></pre>
 </div>
       </div>
@@ -976,16 +1073,20 @@ interval.max(ib1, ib2) == ib2
   
       <div class="member">
         <div class="member-name">
-          <h2 id="min"><pre class="hljs language-aiken">min(left: IntervalBound&lt;Int&gt;, right: IntervalBound&lt;Int&gt;) -&gt; IntervalBound&lt;Int&gt;</pre></h2>
+          <h2 id="to_pairs"><pre class="hljs language-aiken">to_pairs(self: Dict&lt;key, value&gt;) -&gt; Pairs&lt;ByteArray, value&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L622-L631"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/collection/dict.ak#L1091-L1093"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Return the smallest bound of the two.</p>
-<pre><code class="language-aiken">let ib1 = IntervalBound { bound_type: Finite(0), is_inclusive: False }
-let ib2 = IntervalBound { bound_type: Finite(1), is_inclusive: False }
+        <div class="rendered-markdown"><p>Get the inner list holding the dictionary data.</p>
+<pre><code class="language-aiken">let result =
+  dict.empty
+    |&gt; dict.insert("a", 100)
+    |&gt; dict.insert("b", 200)
+    |&gt; dict.insert("c", 300)
+    |&gt; dict.to_pairs()
 
-interval.min(ib1, ib2) == ib1
+result == [Pair("a", 100), Pair("b", 200), Pair("c", 300)]
 </code></pre>
 </div>
       </div>
@@ -1069,8 +1170,8 @@ interval.min(ib1, ib2) == ib1
       </defs>
     </svg>
 
-    <script src="../js/highlight.min.js?v=1.1.0"></script>
-    <script src="../js/highlightjs-aiken.js?v=1.1.0"></script>
+    <script src="../../js/highlight.min.js?v=1.1.0"></script>
+    <script src="../../js/highlightjs-aiken.js?v=1.1.0"></script>
     <script>
       document.querySelectorAll("pre code").forEach((elem) => {
         if (elem.className === "") {
@@ -1112,10 +1213,10 @@ interval.min(ib1, ib2) == ib1
     </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script src="../js/lunr.min.js?v=1.1.0"></script>
-    <script src="../js/index.js?v=1725298000"></script>
+    <script src="../../js/lunr.min.js?v=1.1.0"></script>
+    <script src="../../js/index.js?v=1725298000"></script>
     <!-- Load the search index using JSONP to avoid CORS issues -->
-    <script src="../search-data.js?v=1725298000"></script>
+    <script src="../../search-data.js?v=1725298000"></script>
     <script>
       void function() {
         if (typeof tippy !== "undefined") {

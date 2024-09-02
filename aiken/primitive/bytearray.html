@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>aiken/interval - aiken-lang/stdlib</title>
+    <title>aiken/primitive/bytearray - aiken-lang/stdlib</title>
     <meta name="theme-color" content="#eff1f5" media="(prefers-color-scheme: light)"/>
     <meta name="theme-color" content="#1e1e2e" media="(prefers-color-scheme: dark)"/>
-    <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg"/>
-    <link rel="stylesheet" href="../css/index.css?v=1.1.0" type="text/css"/>
-    <link id="syntax-theme" rel="stylesheet" href="../css/atom-one-light.min.css?v=1.1.0"/>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../../favicon.svg"/>
+    <link rel="stylesheet" href="../../css/index.css?v=1.1.0" type="text/css"/>
+    <link id="syntax-theme" rel="stylesheet" href="../../css/atom-one-light.min.css?v=1.1.0"/>
   </head>
   <body class="prewrap-off theme-light drawer-closed">
     <script>
       "use strict";
-      window.breadcrumbs = '..';
+      window.breadcrumbs = '../..';
       const aikenConfig = {
         theme: {
           values: (() => {
@@ -118,7 +118,7 @@
       </button>
 
       <h2>
-        <a href="../">stdlib</a>
+        <a href="../../">stdlib</a>
         <span id="project-version">
           <span>main </span>
         </span>
@@ -191,24 +191,11 @@
 <h2>Types</h2>
 <ul>
   
-  <li><a href="#Interval">Interval</a></li>
-  
-  <li><a href="#IntervalBound">IntervalBound</a></li>
-  
-  <li><a href="#IntervalBoundType">IntervalBoundType</a></li>
+  <li><a href="#Byte">Byte</a></li>
   
 </ul>
 
 
-
-<h2>Constants</h2>
-<ul>
-  
-  <li><a href="#empty">empty</a></li>
-  
-  <li><a href="#everything">everything</a></li>
-  
-</ul>
 
 
 
@@ -220,32 +207,22 @@
     
   
     
-        <li><a href="#after">after</a></li>
+        <li><a href="#from_int_big_endian">from_int_big_endian</a></li>
 
       
   
     
-        <li><a href="#entirely_after">entirely_after</a></li>
+        <li><a href="#from_int_little_endian">from_int_little_endian</a></li>
 
       
   
     
-        <li><a href="#before">before</a></li>
+        <li><a href="#from_string">from_string</a></li>
 
       
   
     
-        <li><a href="#entirely_before">entirely_before</a></li>
-
-      
-  
-    
-        <li><a href="#between">between</a></li>
-
-      
-  
-    
-        <li><a href="#entirely_between">entirely_between</a></li>
+        <li><a href="#push">push</a></li>
 
       
   
@@ -254,7 +231,12 @@
     
   
     
-        <li><a href="#contains">contains</a></li>
+        <li><a href="#at">at</a></li>
+
+      
+  
+    
+        <li><a href="#index_of">index_of</a></li>
 
       
   
@@ -264,12 +246,31 @@
       
   
     
-        <li><a href="#is_entirely_after">is_entirely_after</a></li>
+        <li><a href="#length">length</a></li>
 
       
   
     
-        <li><a href="#is_entirely_before">is_entirely_before</a></li>
+        <li><a href="#test_bit">test_bit</a></li>
+
+      
+  
+    
+        <li data-heading="2"><a href="#Modifying">Modifying</a></li>
+    
+  
+    
+        <li><a href="#drop">drop</a></li>
+
+      
+  
+    
+        <li><a href="#slice">slice</a></li>
+
+      
+  
+    
+        <li><a href="#take">take</a></li>
 
       
   
@@ -278,22 +279,51 @@
     
   
     
-        <li><a href="#hull">hull</a></li>
+        <li><a href="#concat">concat</a></li>
 
       
   
     
-        <li><a href="#intersection">intersection</a></li>
+        <li><a href="#compare">compare</a></li>
 
       
   
     
-        <li><a href="#max">max</a></li>
+        <li data-heading="2"><a href="#Transforming">Transforming</a></li>
+    
+  
+    
+        <li><a href="#foldl">foldl</a></li>
 
       
   
     
-        <li><a href="#min">min</a></li>
+        <li><a href="#foldr">foldr</a></li>
+
+      
+  
+    
+        <li><a href="#reduce">reduce</a></li>
+
+      
+  
+    
+        <li><a href="#to_int_big_endian">to_int_big_endian</a></li>
+
+      
+  
+    
+        <li><a href="#to_int_little_endian">to_int_little_endian</a></li>
+
+      
+  
+    
+        <li><a href="#to_string">to_string</a></li>
+
+      
+  
+    
+        <li><a href="#to_hex">to_hex</a></li>
 
       
   
@@ -310,7 +340,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/cbor.html">
+	      <li data-indent="1"><a href="../../aiken/cbor.html">
 	      cbor
 	      </a></li>
 	    
@@ -318,7 +348,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/collection.html">
+	      <li data-indent="1"><a href="../../aiken/collection.html">
 	      collection
 	      </a></li>
 	    
@@ -326,7 +356,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/collection/dict.html">
+	      <li data-indent="2"><a href="../../aiken/collection/dict.html">
 	      dict
 	      </a></li>
 	    
@@ -334,7 +364,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/collection/list.html">
+	      <li data-indent="2"><a href="../../aiken/collection/list.html">
 	      list
 	      </a></li>
 	    
@@ -342,7 +372,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/collection/pairs.html">
+	      <li data-indent="2"><a href="../../aiken/collection/pairs.html">
 	      pairs
 	      </a></li>
 	    
@@ -350,7 +380,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/crypto.html">
+	      <li data-indent="1"><a href="../../aiken/crypto.html">
 	      crypto
 	      </a></li>
 	    
@@ -358,15 +388,15 @@
         
 	  
 	    
-	      <li data-indent="1" data-current><a href="../aiken/interval.html">
-	      <strong>interval</strong>
+	      <li data-indent="1"><a href="../../aiken/interval.html">
+	      interval
 	      </a></li>
 	    
 	  
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/math.html">
+	      <li data-indent="1"><a href="../../aiken/math.html">
 	      math
 	      </a></li>
 	    
@@ -374,7 +404,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/math/rational.html">
+	      <li data-indent="2"><a href="../../aiken/math/rational.html">
 	      rational
 	      </a></li>
 	    
@@ -382,7 +412,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../aiken/option.html">
+	      <li data-indent="1"><a href="../../aiken/option.html">
 	      option
 	      </a></li>
 	    
@@ -394,15 +424,15 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/primitive/bytearray.html">
-	      bytearray
+	      <li data-indent="2" data-current><a href="../../aiken/primitive/bytearray.html">
+	      <strong>bytearray</strong>
 	      </a></li>
 	    
 	  
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/primitive/int.html">
+	      <li data-indent="2"><a href="../../aiken/primitive/int.html">
 	      int
 	      </a></li>
 	    
@@ -410,7 +440,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../aiken/primitive/string.html">
+	      <li data-indent="2"><a href="../../aiken/primitive/string.html">
 	      string
 	      </a></li>
 	    
@@ -422,7 +452,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/address.html">
+	      <li data-indent="1"><a href="../../cardano/address.html">
 	      address
 	      </a></li>
 	    
@@ -430,7 +460,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/assets.html">
+	      <li data-indent="1"><a href="../../cardano/assets.html">
 	      assets
 	      </a></li>
 	    
@@ -438,7 +468,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/certificate.html">
+	      <li data-indent="1"><a href="../../cardano/certificate.html">
 	      certificate
 	      </a></li>
 	    
@@ -446,7 +476,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/governance.html">
+	      <li data-indent="1"><a href="../../cardano/governance.html">
 	      governance
 	      </a></li>
 	    
@@ -454,7 +484,7 @@
         
 	  
 	    
-	      <li data-indent="2"><a href="../cardano/governance/protocol_parameters.html">
+	      <li data-indent="2"><a href="../../cardano/governance/protocol_parameters.html">
 	      protocol_parameters
 	      </a></li>
 	    
@@ -462,7 +492,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/script_context.html">
+	      <li data-indent="1"><a href="../../cardano/script_context.html">
 	      script_context
 	      </a></li>
 	    
@@ -470,7 +500,7 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/transaction.html">
+	      <li data-indent="1"><a href="../../cardano/transaction.html">
 	      transaction
 	      </a></li>
 	    
@@ -482,19 +512,8 @@
       <main class="content">
         
 <h1 id="module-name" class="module-name">
-  <a href="#module-name">aiken/interval</a>
+  <a href="#module-name">aiken/primitive/bytearray</a>
 </h1>
-<p>In a eUTxO-based blockchain like Cardano, the management of time can be
-finicky.</p>
-<p>Indeed, in order to maintain a complete determinism in the execution of
-scripts, it is impossible to introduce a notion of <em>“current time”</em> since
-the execution would then depend on factor that are external to the
-transaction itself: the ineluctable stream of time flowing in our universe.</p>
-<p>Hence, to work around that, we typically define time intervals, which gives
-window – a.k.a intervals – within which the transaction can be executed.
-From within a script, it isn’t possible to know when exactly the script is
-executed, but we can reason about the interval bounds to validate pieces of
-logic.</p>
 
 
 
@@ -506,130 +525,23 @@ logic.</p>
   
   <div class="member">
     <div class="member-name">
-      <h2 id="Interval">
-        <a href="#Interval">
-	  Interval&lt;a&gt;
+      <h2 id="Byte">
+        <a href="#Byte">
+	  Byte
         </a>
       </h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L42-L45"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L5-L6"></a>
       
     </div>
     <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>A type to represent intervals of values. Interval are inhabited by a type
-<code>a</code> which is useful for non-infinite intervals that have a finite
-lower-bound and/or upper-bound.</p>
-<p>This allows to represent all kind of mathematical intervals:</p>
-<pre><code class="language-aiken">// [1; 10]
-let i0: Interval&lt;PosixTime&gt; = Interval
-  { lower_bound:
-      IntervalBound { bound_type: Finite(1), is_inclusive: True }
-  , upper_bound:
-      IntervalBound { bound_type: Finite(10), is_inclusive: True }
-  }
-</code></pre>
-<pre><code class="language-aiken">// (20; infinity)
-let i1: Interval&lt;PosixTime&gt; = Interval
-  { lower_bound:
-      IntervalBound { bound_type: Finite(20), is_inclusive: False }
-  , upper_bound:
-      IntervalBound { bound_type: PositiveInfinity, is_inclusive: False }
-  }
-</code></pre>
-</div>
+      <div class="rendered-markdown"></div>
       
-      <h3>Constructors</h3>
-      <ul class="constructor-list">
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">Interval { lower_bound: IntervalBound&lt;a&gt;, upper_bound: IntervalBound&lt;a&gt; }</code></pre>
-          </div>
-	  
-        </li>
-        
-      </ul>
-      
-    </div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="IntervalBound">
-        <a href="#IntervalBound">
-	  IntervalBound&lt;a&gt;
-        </a>
-      </h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L48-L51"></a>
-      
-    </div>
-    <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>An interval bound, either inclusive or exclusive.</p>
-</div>
-      
-      <h3>Constructors</h3>
-      <ul class="constructor-list">
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">IntervalBound { bound_type: IntervalBoundType&lt;a&gt;, is_inclusive: Bool }</code></pre>
-          </div>
-	  
-        </li>
-        
-      </ul>
-      
-    </div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="IntervalBoundType">
-        <a href="#IntervalBoundType">
-	  IntervalBoundType&lt;a&gt;
-        </a>
-      </h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L56-L60"></a>
-      
-    </div>
-    <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>A type of interval bound. Where finite, a value of type <code>a</code> must be
-provided. <code>a</code> will typically be an <code>Int</code>, representing a number of seconds or
-milliseconds.</p>
-</div>
-      
-      <h3>Constructors</h3>
-      <ul class="constructor-list">
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">NegativeInfinity</code></pre>
-          </div>
-	  
-        </li>
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">Finite(a)</code></pre>
-          </div>
-	  
-        </li>
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">PositiveInfinity</code></pre>
-          </div>
-	  
-        </li>
-        
-      </ul>
+      <h3>Alias</h3>
+      <div class="constructor-row">
+        <svg class="icon icon-at"><use xlink:href="#icon-at"></use></svg>
+        <pre class="constructor-name"><code class="hljs aiken">Byte = Int</code></pre>
+      </div>
       
     </div>
   </div>
@@ -637,42 +549,6 @@ milliseconds.</p>
 </section>
 
 
-
-<section class="module-members">
-  <h1 id="module-constants" class="module-member-kind">
-    <a href="#module-constants">Constants</a>
-  </h1>
-
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="empty"><pre class="hljs language-aiken">empty: Interval&lt;a&gt;</pre></h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L196-L206"></a>
-      
-    </div>
-    <div class="rendered-markdown"><p>Create an empty interval that contains no value.</p>
-<pre><code class="language-aiken">interval.contains(empty, 0) == False
-interval.contains(empty, 1000) == False
-</code></pre>
-</div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="everything"><pre class="hljs language-aiken">everything: Interval&lt;a&gt;</pre></h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L214-L224"></a>
-      
-    </div>
-    <div class="rendered-markdown"><p>Create an interval that contains every possible values. i.e. (-INF, +INF)</p>
-<pre><code class="language-aiken">interval.contains(everything, 0) == True
-interval.contains(everything, 1000) == True
-</code></pre>
-</div>
-  </div>
-  
-</section>
 
 
 
@@ -690,16 +566,21 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="after"><pre class="hljs language-aiken">after(lower_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="from_int_big_endian"><pre class="hljs language-aiken">from_int_big_endian(self: Int, size: Int) -&gt; ByteArray</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L72-L83"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L23-L25"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values greater than the given bound. i.e [lower_bound, +INF)</p>
-<pre><code class="language-aiken">interval.after(10) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: PositiveInfinity, is_inclusive: True },
-}
+        <div class="rendered-markdown"><p>Encode an integer value as a Big-Endian (most-significant bytes first) <code>ByteArray</code>.
+The size is the expected size in number of bytes.</p>
+<blockquote class="markdown-alert-important">
+<p>This function halts the program if the value cannot fit in the given size. When the
+size is <em>too large</em>, the array is left-padded with zeroes.</p>
+</blockquote>
+<pre><code class="language-aiken">bytearray.from_int_big_endian(1_000_000, 3) == #"0f4240"
+bytearray.from_int_big_endian(1_000_000, 5) == #"00000f4240"
+bytearray.from_int_big_endian(0, 8) == #"0000000000000000"
+bytearray.from_int_big_endian(1_000_000, 1) =&gt; 💥
 </code></pre>
 </div>
       </div>
@@ -708,16 +589,21 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="entirely_after"><pre class="hljs language-aiken">entirely_after(lower_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="from_int_little_endian"><pre class="hljs language-aiken">from_int_little_endian(self: Int, size: Int) -&gt; ByteArray</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L93-L104"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L56-L58"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values after (and not including) the given bound. i.e (lower_bound, +INF)</p>
-<pre><code class="language-aiken">interval.entirely_after(10) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-  upper_bound: IntervalBound { bound_type: PositiveInfinity, is_inclusive: True },
-}
+        <div class="rendered-markdown"><p>Encode an integer value as a Little-Endian (least-significant bytes first) <code>ByteArray</code>.
+The size is the expected size in number of bytes.</p>
+<blockquote class="markdown-alert-important">
+<p>This function halts the program if the value cannot fit in the given size. When the
+size is <em>too large</em>, the array is right-padded with zeroes.</p>
+</blockquote>
+<pre><code class="language-aiken">bytearray.from_int_big_endian(1_000_000, 3) == #"0f4240"
+bytearray.from_int_big_endian(1_000_000, 5) == #"00000f4240"
+bytearray.from_int_big_endian(0, 8) == #"0000000000000000"
+bytearray.from_int_big_endian(1_000_000, 1) =&gt; 💥
 </code></pre>
 </div>
       </div>
@@ -726,16 +612,13 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="before"><pre class="hljs language-aiken">before(upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="from_string"><pre class="hljs language-aiken">from_string(str: String) -&gt; ByteArray</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L114-L125"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L81-L83"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values before (and including) the given bound. i.e (-INF, upper_bound]</p>
-<pre><code class="language-aiken">interval.before(100) == Interval {
-  lower_bound: IntervalBound { bound_type: NegativeInfinity, is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: True },
-}
+        <div class="rendered-markdown"><p>Convert a <code>String</code> into a <code>ByteArray</code>.</p>
+<pre><code class="language-aiken">bytearray.from_string(@"ABC") == #"414243"
 </code></pre>
 </div>
       </div>
@@ -744,52 +627,18 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="entirely_before"><pre class="hljs language-aiken">entirely_before(upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="push"><pre class="hljs language-aiken">push(self: ByteArray, byte: Byte) -&gt; ByteArray</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L135-L146"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values before (and not including) the given bound. i.e (-INF, upper_bound)</p>
-<pre><code class="language-aiken">interval.entirely_before(10) == Interval {
-  lower_bound: IntervalBound { bound_type: NegativeInfinity, is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="between"><pre class="hljs language-aiken">between(lower_bound: a, upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L156-L167"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L103-L105"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values between two bounds, including the bounds. i.e. [lower_bound, upper_bound]</p>
-<pre><code class="language-aiken">interval.between(10, 100) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="entirely_between"><pre class="hljs language-aiken">entirely_between(lower_bound: a, upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L177-L188"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values between two bounds, excluding the bounds. i.e. (lower_bound, upper_bound)</p>
-<pre><code class="language-aiken">interval.entirely_between(10, 100) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: False },
-}
+        <div class="rendered-markdown"><p>Add a byte element in front of a <code>ByteArray</code>. When the given byte is
+greater than 255, it wraps-around. <strong>PlutusV2 behavior</strong> So 256 is mapped to 0, 257 to 1, and so
+forth.
+In PlutusV3 this will error instead of wrapping around.</p>
+<pre><code class="language-aiken">bytearray.push(#"", 0) == #"00"
+bytearray.push(#"0203", 1) == #"010203"
+bytearray.push(#"0203", 257) == #"010203"
 </code></pre>
 </div>
       </div>
@@ -804,28 +653,33 @@ interval.contains(everything, 1000) == True
   
       <div class="member">
         <div class="member-name">
-          <h2 id="contains"><pre class="hljs language-aiken">contains(self: Interval&lt;Int&gt;, elem: Int) -&gt; Bool</pre></h2>
+          <h2 id="at"><pre class="hljs language-aiken">at(self: ByteArray, index: Int) -&gt; Byte</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L248-L274"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L126-L128"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Checks whether an element is contained within the interval.</p>
-<pre><code class="language-aiken">let iv =
-  Interval {
-    lower_bound: IntervalBound {
-      bound_type: Finite(14),
-      is_inclusive: True
-    },
-    upper_bound: IntervalBound {
-      bound_type: Finite(42),
-      is_inclusive: False
-    },
-  }
-
-interval.contains(iv, 25) == True
-interval.contains(iv, 0) == False
-interval.contains(iv, 14) == True
-interval.contains(iv, 42) == False
+        <div class="rendered-markdown"><p>Get the <code>Byte</code> at the given index, or crash.</p>
+<blockquote class="markdown-alert-warning">
+<p>This functions halts the program if there’s no byte at the given index.</p>
+</blockquote>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="index_of"><pre class="hljs language-aiken">index_of(self: ByteArray, bytes: ByteArray) -&gt; Option&lt;(Int, Int)&gt;</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L139-L144"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Search the start and end positions of a sub-array in a <code>ByteArray</code>.</p>
+<pre><code class="language-aiken">bytearray.index_of("Hello, World!", "World") == Some((7, 11))
+bytearray.index_of("Hello, World!", "foo") == None
+bytearray.index_of("Hello, World!", "!") == Some((12, 12))
+bytearray.index_of("Hello, World!", "o") == Some((4, 4))
+bytearray.index_of("Hello, World!", "Hello, World!") == Some((0, 12))
 </code></pre>
 </div>
       </div>
@@ -834,30 +688,14 @@ interval.contains(iv, 42) == False
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_empty"><pre class="hljs language-aiken">is_empty(self: Interval&lt;Int&gt;) -&gt; Bool</pre></h2>
+          <h2 id="is_empty"><pre class="hljs language-aiken">is_empty(self: ByteArray) -&gt; Bool</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L358-L379"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L190-L192"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Tells whether an interval is empty; i.e. that is contains no value.</p>
-<pre><code class="language-aiken">let iv1 = interval.empty
-
-let iv2 = Interval {
-    lower_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-    upper_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-  }
-
-let iv3 = Interval {
-    lower_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-    upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: False },
-  }
-
-interval.is_empty(iv1) == True
-interval.is_empty(iv2) == True
-interval.is_empty(iv3) == False
-
-// Note: Two empty intervals are not necessarily equal.
-iv1 != iv2
+        <div class="rendered-markdown"><p>Returns <code>True</code> when the given <code>ByteArray</code> is empty.</p>
+<pre><code class="language-aiken">bytearray.is_empty(#"") == True
+bytearray.is_empty(#"00ff") == False
 </code></pre>
 </div>
       </div>
@@ -866,17 +704,14 @@ iv1 != iv2
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_entirely_after"><pre class="hljs language-aiken">is_entirely_after(self: Interval&lt;Int&gt;, point: Int) -&gt; Bool</pre></h2>
+          <h2 id="length"><pre class="hljs language-aiken">length(self: ByteArray) -&gt; Int</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L389-L399"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L207-L209"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Check whether the interval is entirely after the point “a”</p>
-<pre><code class="language-aiken">interval.is_entirely_after(interval.after(10), 5) == True
-interval.is_entirely_after(interval.after(10), 10) == False
-interval.is_entirely_after(interval.after(10), 15) == False
-interval.is_entirely_after(interval.between(10, 20), 30) == False
-interval.is_entirely_after(interval.between(10, 20), 5) == True</code></pre>
+        <div class="rendered-markdown"><p>Returns the number of bytes in a <code>ByteArray</code>.</p>
+<pre><code class="language-aiken">bytearray.length(#[1, 2, 3]) == 3
+</code></pre>
 </div>
       </div>
     
@@ -884,17 +719,81 @@ interval.is_entirely_after(interval.between(10, 20), 5) == True</code></pre>
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_entirely_before"><pre class="hljs language-aiken">is_entirely_before(self: Interval&lt;Int&gt;, point: Int) -&gt; Bool</pre></h2>
+          <h2 id="test_bit"><pre class="hljs language-aiken">test_bit(self: ByteArray, ix: Int) -&gt; Bool</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L445-L455"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L242-L250"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Check whether the interval is entirely before the point “a”</p>
-<pre><code class="language-aiken">interval.is_entirely_before(interval.before(10), 15) == True
-interval.is_entirely_before(interval.before(10), 10) == False
-interval.is_entirely_before(interval.before(10), 5) == False
-interval.is_entirely_before(interval.between(10, 20), 30) == True
-interval.is_entirely_before(interval.between(10, 20), 5) == False</code></pre>
+        <div class="rendered-markdown"><p>Checks whether a bit (Most-Significant-Bit first) is set in the given ‘ByteArray’.</p>
+<p>For example, consider the following bytearray: <code>#"8b765f"</code>. It can also be written as the
+following bits sequence:</p>
+<table><thead><tr><th><code>8</code></th><th><code>b</code></th><th><code>7</code></th><th><code>6</code></th><th><code>5</code></th><th><code>f</code></th></tr></thead><tbody>
+<tr><td><code>1000</code></td><td><code>1011</code></td><td><code>0111</code></td><td><code>0110</code></td><td><code>0101</code></td><td><code>1111</code></td></tr>
+</tbody></table>
+<p>And thus, we have:</p>
+<pre><code class="language-aiken">test_bit(#"8b765f", 0) == True
+test_bit(#"8b765f", 1) == False
+test_bit(#"8b765f", 2) == False
+test_bit(#"8b765f", 3) == False
+test_bit(#"8b765f", 7) == True
+test_bit(#"8b765f", 8) == False
+test_bit(#"8b765f", 20) == True
+test_bit(#"8b765f", 21) == True
+test_bit(#"8b765f", 22) == True
+test_bit(#"8b765f", 23) == True
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      
+        <h2 id="Modifying" class="module-heading"><a href="#Modifying">Modifying</a></h3>
+      
+  
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="drop"><pre class="hljs language-aiken">drop(self: ByteArray, n: Int) -&gt; ByteArray</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L292-L294"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Returns the suffix of a <code>ByteArray</code> after <code>n</code> elements.</p>
+<pre><code class="language-aiken">bytearray.drop(#[1, 2, 3], n: 2) == #[3]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="slice"><pre class="hljs language-aiken">slice(self: ByteArray, start: Int, end: Int) -&gt; ByteArray</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L323-L325"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Extract a <code>ByteArray</code> as a slice of another <code>ByteArray</code>.</p>
+<p>Indexes are 0-based and inclusive.</p>
+<pre><code class="language-aiken">bytearray.slice(#[0, 1, 2, 3, 4, 5, 6], start: 1, end: 3) == #[1, 2, 3]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="take"><pre class="hljs language-aiken">take(self: ByteArray, n: Int) -&gt; ByteArray</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L352-L354"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Returns the n-length prefix of a <code>ByteArray</code>.</p>
+<pre><code class="language-aiken">bytearray.take(#[1, 2, 3], n: 2) == #[1, 2]
+</code></pre>
 </div>
       </div>
     
@@ -908,23 +807,13 @@ interval.is_entirely_before(interval.between(10, 20), 5) == False</code></pre>
   
       <div class="member">
         <div class="member-name">
-          <h2 id="hull"><pre class="hljs language-aiken">hull(iv1: Interval&lt;Int&gt;, iv2: Interval&lt;Int&gt;) -&gt; Interval&lt;Int&gt;</pre></h2>
+          <h2 id="concat"><pre class="hljs language-aiken">concat(left: ByteArray, right: ByteArray) -&gt; ByteArray</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L510-L515"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L383-L385"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Computes the smallest interval containing the two given intervals, if any</p>
-<pre><code class="language-aiken">let iv1 = between(0, 10)
-let iv2 = between(2, 14)
-hull(iv1, iv2) == between(0, 14)
-
-let iv1 = between(5, 10)
-let iv2 = before(0)
-hull(iv1, iv2) == before(10)
-
-let iv1 = entirely_after(0)
-let iv2 = between(10, 42)
-hull(iv1, iv2) = entirely_after(0)
+        <div class="rendered-markdown"><p>Combine two <code>ByteArray</code> together.</p>
+<pre><code class="language-aiken">bytearray.concat(left: #[1, 2, 3], right: #[4, 5, 6]) == #[1, 2, 3, 4, 5, 6]
 </code></pre>
 </div>
       </div>
@@ -933,23 +822,37 @@ hull(iv1, iv2) = entirely_after(0)
   
       <div class="member">
         <div class="member-name">
-          <h2 id="intersection"><pre class="hljs language-aiken">intersection(iv1: Interval&lt;Int&gt;, iv2: Interval&lt;Int&gt;) -&gt; Interval&lt;Int&gt;</pre></h2>
+          <h2 id="compare"><pre class="hljs language-aiken">compare(left: ByteArray, right: ByteArray) -&gt; Ordering</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L550-L555"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L410-L418"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Computes the largest interval contains in the two given intervals, if any.</p>
-<pre><code class="language-aiken">let iv1 = interval.between(0, 10)
-let iv2 = interval.between(2, 14)
-interval.intersection(iv1, iv2) == interval.between(2, 10)
-
-let iv1 = interval.entirely_before(10)
-let iv2 = interval.entirely_after(0)
-interval.intersection(iv1, iv2) == interval.entirely_between(0, 10)
-
-let iv1 = interval.between(0, 1)
-let iv2 = interval.between(2, 3)
-interval.intersection(iv1, iv2) |&gt; interval.is_empty
+        <div class="rendered-markdown"><p>Compare two bytearrays lexicographically.</p>
+<pre><code class="language-aiken">bytearray.compare(#"00", #"FF") == Less
+bytearray.compare(#"42", #"42") == Equal
+bytearray.compare(#"FF", #"00") == Greater
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      
+        <h2 id="Transforming" class="module-heading"><a href="#Transforming">Transforming</a></h3>
+      
+  
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="foldl"><pre class="hljs language-aiken">foldl(self: ByteArray, zero: result, with: fn(Int, result) -&gt; result) -&gt; result</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L428-L434"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Left-fold over bytes of a <a href="https://aiken-lang.github.io/prelude/aiken.html#ByteArray"><code>ByteArray</code></a>. Note that every byte given to the callback function is comprised between 0 and 255.</p>
+<pre><code class="language-aiken">bytearray.foldl(#"acab", 0, fn(byte, acc) { acc * 256 + byte }) == 44203
+bytearray.foldl(#[1, 2, 3], #"", flip(bytearray.push)) == #[3, 2, 1]
 </code></pre>
 </div>
       </div>
@@ -958,16 +861,14 @@ interval.intersection(iv1, iv2) |&gt; interval.is_empty
   
       <div class="member">
         <div class="member-name">
-          <h2 id="max"><pre class="hljs language-aiken">max(left: IntervalBound&lt;Int&gt;, right: IntervalBound&lt;Int&gt;) -&gt; IntervalBound&lt;Int&gt;</pre></h2>
+          <h2 id="foldr"><pre class="hljs language-aiken">foldr(self: ByteArray, zero: result, with: fn(Int, result) -&gt; result) -&gt; result</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L603-L612"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L482-L488"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Return the highest bound of the two.</p>
-<pre><code class="language-aiken">let ib1 = IntervalBound { bound_type: Finite(0), is_inclusive: False }
-let ib2 = IntervalBound { bound_type: Finite(1), is_inclusive: False }
-
-interval.max(ib1, ib2) == ib2
+        <div class="rendered-markdown"><p>Right-fold over bytes of a <a href="https://aiken-lang.github.io/prelude/aiken.html#ByteArray"><code>ByteArray</code></a>. Note that every byte given to the callback function is comprised between 0 and 255.</p>
+<pre><code class="language-aiken">bytearray.foldr(#"acab", 0, fn(byte, acc) { acc * 256 + byte }) == 43948
+bytearray.foldl(#[1, 2, 3], #"", flip(bytearray.push)) == #[1, 2, 3]
 </code></pre>
 </div>
       </div>
@@ -976,16 +877,83 @@ interval.max(ib1, ib2) == ib2
   
       <div class="member">
         <div class="member-name">
-          <h2 id="min"><pre class="hljs language-aiken">min(left: IntervalBound&lt;Int&gt;, right: IntervalBound&lt;Int&gt;) -&gt; IntervalBound&lt;Int&gt;</pre></h2>
+          <h2 id="reduce"><pre class="hljs language-aiken">reduce(self: ByteArray, zero: result, with: fn(result, Int) -&gt; result) -&gt; result</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L622-L631"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L526-L532"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Return the smallest bound of the two.</p>
-<pre><code class="language-aiken">let ib1 = IntervalBound { bound_type: Finite(0), is_inclusive: False }
-let ib2 = IntervalBound { bound_type: Finite(1), is_inclusive: False }
-
-interval.min(ib1, ib2) == ib1
+        <div class="rendered-markdown"><p>Reduce bytes in a ByteArray from left to right using the accumulator as left operand.
+Said differently, this is <a href="#foldl"><code>foldl</code></a> with callback arguments swapped.</p>
+<pre><code class="language-aiken">bytearray.reduce(#[1,2,3], #[], bytearray.push) == #[3, 2, 1]
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="to_int_big_endian"><pre class="hljs language-aiken">to_int_big_endian(self: ByteArray) -&gt; Int</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L549-L551"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Interpret a Big-Endian (most-significant bytes first) <code>ByteArray</code> as an <code>Int</code>.</p>
+<pre><code class="language-aiken">bytearray.to_int_big_endian(#"0f4240") == 1_000_000
+bytearray.to_int_big_endian(#"00000f4240") == 1_000_000
+bytearray.to_int_big_endian(#"0000000000000000") == 0
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="to_int_little_endian"><pre class="hljs language-aiken">to_int_little_endian(self: ByteArray) -&gt; Int</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L572-L574"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Interpret a Little-Endian (least-significant bytes first) <code>ByteArray</code> as an <code>Int</code>.</p>
+<pre><code class="language-aiken">bytearray.to_int_big_endian(#"40420f") == 1_000_000
+bytearray.to_int_big_endian(#"40420f0000") == 1_000_000
+bytearray.to_int_big_endian(#"0000000000000000") == 0
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="to_string"><pre class="hljs language-aiken">to_string(self: ByteArray) -&gt; String</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L599-L601"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Convert a <code>ByteArray</code> into a <code>String</code>.</p>
+<blockquote class="markdown-alert-warning">
+<p>This functions fails if the underlying <code>ByteArray</code> isn’t UTF-8-encoded. In particular, you cannot convert arbitrary hash digests using this function.</p>
+<p>For converting arbitrary <code>ByteArray</code>s, use <a href="#to_hex">bytearray.to_hex</a>.</p>
+</blockquote>
+<pre><code class="language-aiken">bytearray.to_string(#"414243") == "ABC"
+bytearray.to_string(some_hash) =&gt; 💥
+</code></pre>
+</div>
+      </div>
+    
+  
+  
+      <div class="member">
+        <div class="member-name">
+          <h2 id="to_hex"><pre class="hljs language-aiken">to_hex(self: ByteArray) -&gt; String</pre></h2>
+          
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/primitive/bytearray.ak#L616-L620"></a>
+          
+        </div>
+        <div class="rendered-markdown"><p>Encode a <code>ByteArray</code> as a hexidecimal <code>String</code>.</p>
+<pre><code class="language-aiken">bytearray.to_hex("Hello world!") == @"48656c6c6f20776f726c6421"
 </code></pre>
 </div>
       </div>
@@ -1069,8 +1037,8 @@ interval.min(ib1, ib2) == ib1
       </defs>
     </svg>
 
-    <script src="../js/highlight.min.js?v=1.1.0"></script>
-    <script src="../js/highlightjs-aiken.js?v=1.1.0"></script>
+    <script src="../../js/highlight.min.js?v=1.1.0"></script>
+    <script src="../../js/highlightjs-aiken.js?v=1.1.0"></script>
     <script>
       document.querySelectorAll("pre code").forEach((elem) => {
         if (elem.className === "") {
@@ -1112,10 +1080,10 @@ interval.min(ib1, ib2) == ib1
     </script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script src="../js/lunr.min.js?v=1.1.0"></script>
-    <script src="../js/index.js?v=1725298000"></script>
+    <script src="../../js/lunr.min.js?v=1.1.0"></script>
+    <script src="../../js/index.js?v=1725298000"></script>
     <!-- Load the search index using JSONP to avoid CORS issues -->
-    <script src="../search-data.js?v=1725298000"></script>
+    <script src="../../search-data.js?v=1725298000"></script>
     <script>
       void function() {
         if (typeof tippy !== "undefined") {

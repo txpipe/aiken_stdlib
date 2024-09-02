@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>aiken/interval - aiken-lang/stdlib</title>
+    <title>cardano/transaction - aiken-lang/stdlib</title>
     <meta name="theme-color" content="#eff1f5" media="(prefers-color-scheme: light)"/>
     <meta name="theme-color" content="#1e1e2e" media="(prefers-color-scheme: dark)"/>
     <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg"/>
@@ -191,11 +191,23 @@
 <h2>Types</h2>
 <ul>
   
-  <li><a href="#Interval">Interval</a></li>
+  <li><a href="#Datum">Datum</a></li>
   
-  <li><a href="#IntervalBound">IntervalBound</a></li>
+  <li><a href="#Input">Input</a></li>
   
-  <li><a href="#IntervalBoundType">IntervalBoundType</a></li>
+  <li><a href="#Output">Output</a></li>
+  
+  <li><a href="#OutputReference">OutputReference</a></li>
+  
+  <li><a href="#Redeemer">Redeemer</a></li>
+  
+  <li><a href="#ScriptPurpose">ScriptPurpose</a></li>
+  
+  <li><a href="#Transaction">Transaction</a></li>
+  
+  <li><a href="#TransactionId">TransactionId</a></li>
+  
+  <li><a href="#ValidityRange">ValidityRange</a></li>
   
 </ul>
 
@@ -204,9 +216,7 @@
 <h2>Constants</h2>
 <ul>
   
-  <li><a href="#empty">empty</a></li>
-  
-  <li><a href="#everything">everything</a></li>
+  <li><a href="#placeholder">placeholder</a></li>
   
 </ul>
 
@@ -216,84 +226,21 @@
 <ul>
   
     
-        <li data-heading="2"><a href="#Constructing">Constructing</a></li>
+        <li data-heading="2"><a href="#Querying">Querying</a></li>
     
   
     
-        <li><a href="#after">after</a></li>
+        <li><a href="#find_input">find_input</a></li>
 
       
   
     
-        <li><a href="#entirely_after">entirely_after</a></li>
+        <li><a href="#find_datum">find_datum</a></li>
 
       
   
     
-        <li><a href="#before">before</a></li>
-
-      
-  
-    
-        <li><a href="#entirely_before">entirely_before</a></li>
-
-      
-  
-    
-        <li><a href="#between">between</a></li>
-
-      
-  
-    
-        <li><a href="#entirely_between">entirely_between</a></li>
-
-      
-  
-    
-        <li data-heading="2"><a href="#Inspecting">Inspecting</a></li>
-    
-  
-    
-        <li><a href="#contains">contains</a></li>
-
-      
-  
-    
-        <li><a href="#is_empty">is_empty</a></li>
-
-      
-  
-    
-        <li><a href="#is_entirely_after">is_entirely_after</a></li>
-
-      
-  
-    
-        <li><a href="#is_entirely_before">is_entirely_before</a></li>
-
-      
-  
-    
-        <li data-heading="2"><a href="#Combining">Combining</a></li>
-    
-  
-    
-        <li><a href="#hull">hull</a></li>
-
-      
-  
-    
-        <li><a href="#intersection">intersection</a></li>
-
-      
-  
-    
-        <li><a href="#max">max</a></li>
-
-      
-  
-    
-        <li><a href="#min">min</a></li>
+        <li><a href="#find_script_outputs">find_script_outputs</a></li>
 
       
   
@@ -358,8 +305,8 @@
         
 	  
 	    
-	      <li data-indent="1" data-current><a href="../aiken/interval.html">
-	      <strong>interval</strong>
+	      <li data-indent="1"><a href="../aiken/interval.html">
+	      interval
 	      </a></li>
 	    
 	  
@@ -470,8 +417,8 @@
         
 	  
 	    
-	      <li data-indent="1"><a href="../cardano/transaction.html">
-	      transaction
+	      <li data-indent="1" data-current><a href="../cardano/transaction.html">
+	      <strong>transaction</strong>
 	      </a></li>
 	    
 	  
@@ -482,19 +429,8 @@
       <main class="content">
         
 <h1 id="module-name" class="module-name">
-  <a href="#module-name">aiken/interval</a>
+  <a href="#module-name">cardano/transaction</a>
 </h1>
-<p>In a eUTxO-based blockchain like Cardano, the management of time can be
-finicky.</p>
-<p>Indeed, in order to maintain a complete determinism in the execution of
-scripts, it is impossible to introduce a notion of <em>“current time”</em> since
-the execution would then depend on factor that are external to the
-transaction itself: the ineluctable stream of time flowing in our universe.</p>
-<p>Hence, to work around that, we typically define time intervals, which gives
-window – a.k.a intervals – within which the transaction can be executed.
-From within a script, it isn’t possible to know when exactly the script is
-executed, but we can reason about the interval bounds to validate pieces of
-logic.</p>
 
 
 
@@ -506,36 +442,17 @@ logic.</p>
   
   <div class="member">
     <div class="member-name">
-      <h2 id="Interval">
-        <a href="#Interval">
-	  Interval&lt;a&gt;
+      <h2 id="Datum">
+        <a href="#Datum">
+	  Datum
         </a>
       </h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L42-L45"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L107-L113"></a>
       
     </div>
     <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>A type to represent intervals of values. Interval are inhabited by a type
-<code>a</code> which is useful for non-infinite intervals that have a finite
-lower-bound and/or upper-bound.</p>
-<p>This allows to represent all kind of mathematical intervals:</p>
-<pre><code class="language-aiken">// [1; 10]
-let i0: Interval&lt;PosixTime&gt; = Interval
-  { lower_bound:
-      IntervalBound { bound_type: Finite(1), is_inclusive: True }
-  , upper_bound:
-      IntervalBound { bound_type: Finite(10), is_inclusive: True }
-  }
-</code></pre>
-<pre><code class="language-aiken">// (20; infinity)
-let i1: Interval&lt;PosixTime&gt; = Interval
-  { lower_bound:
-      IntervalBound { bound_type: Finite(20), is_inclusive: False }
-  , upper_bound:
-      IntervalBound { bound_type: PositiveInfinity, is_inclusive: False }
-  }
-</code></pre>
+      <div class="rendered-markdown"><p>An output <code>Datum</code>.</p>
 </div>
       
       <h3>Constructors</h3>
@@ -544,7 +461,33 @@ let i1: Interval&lt;PosixTime&gt; = Interval
         <li class="constructor-item">
           <div class="constructor-row">
             <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">Interval { lower_bound: IntervalBound&lt;a&gt;, upper_bound: IntervalBound&lt;a&gt; }</code></pre>
+            <pre class="constructor-name"><code class="hljs aiken">NoDatum</code></pre>
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">DatumHash(DataHash)</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>A datum referenced by its hash digest.</p>
+
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">InlineDatum(Data)</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>A datum completely inlined in the output.</p>
+
           </div>
 	  
         </li>
@@ -556,17 +499,17 @@ let i1: Interval&lt;PosixTime&gt; = Interval
   
   <div class="member">
     <div class="member-name">
-      <h2 id="IntervalBound">
-        <a href="#IntervalBound">
-	  IntervalBound&lt;a&gt;
+      <h2 id="Input">
+        <a href="#Input">
+	  Input
         </a>
       </h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L48-L51"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L85-L88"></a>
       
     </div>
     <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>An interval bound, either inclusive or exclusive.</p>
+      <div class="rendered-markdown"><p>An <code>Input</code> made of an output reference and, the resolved value associated with that output.</p>
 </div>
       
       <h3>Constructors</h3>
@@ -575,7 +518,7 @@ let i1: Interval&lt;PosixTime&gt; = Interval
         <li class="constructor-item">
           <div class="constructor-row">
             <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">IntervalBound { bound_type: IntervalBoundType&lt;a&gt;, is_inclusive: Bool }</code></pre>
+            <pre class="constructor-name"><code class="hljs aiken">Input { output_reference: OutputReference, output: Output }</code></pre>
           </div>
 	  
         </li>
@@ -587,19 +530,17 @@ let i1: Interval&lt;PosixTime&gt; = Interval
   
   <div class="member">
     <div class="member-name">
-      <h2 id="IntervalBoundType">
-        <a href="#IntervalBoundType">
-	  IntervalBoundType&lt;a&gt;
+      <h2 id="Output">
+        <a href="#Output">
+	  Output
         </a>
       </h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L56-L60"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L99-L104"></a>
       
     </div>
     <div class="custom-type-constructors">
-      <div class="rendered-markdown"><p>A type of interval bound. Where finite, a value of type <code>a</code> must be
-provided. <code>a</code> will typically be an <code>Int</code>, representing a number of seconds or
-milliseconds.</p>
+      <div class="rendered-markdown"><p>A transaction <code>Output</code>, with an address, a value and optional datums and script references.</p>
 </div>
       
       <h3>Constructors</h3>
@@ -608,28 +549,309 @@ milliseconds.</p>
         <li class="constructor-item">
           <div class="constructor-row">
             <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">NegativeInfinity</code></pre>
-          </div>
-	  
-        </li>
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">Finite(a)</code></pre>
-          </div>
-	  
-        </li>
-        
-        <li class="constructor-item">
-          <div class="constructor-row">
-            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
-            <pre class="constructor-name"><code class="hljs aiken">PositiveInfinity</code></pre>
+            <pre class="constructor-name"><code class="hljs aiken">Output {
+  address: Address,
+  value: Value,
+  datum: Datum,
+  reference_script: Option&lt;ScriptHash&gt;,
+}</code></pre>
           </div>
 	  
         </li>
         
       </ul>
+      
+    </div>
+  </div>
+  
+  <div class="member">
+    <div class="member-name">
+      <h2 id="OutputReference">
+        <a href="#OutputReference">
+	  OutputReference
+        </a>
+      </h2>
+      
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L93-L96"></a>
+      
+    </div>
+    <div class="custom-type-constructors">
+      <div class="rendered-markdown"><p>An <code>OutputReference</code> is a unique reference to an output on-chain. The <code>output_index</code>
+corresponds to the position in the output list of the transaction (identified by its id)
+that produced that output</p>
+</div>
+      
+      <h3>Constructors</h3>
+      <ul class="constructor-list">
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">OutputReference {
+  transaction_id: Hash&lt;Blake2b_256, Transaction&gt;,
+  output_index: Int,
+}</code></pre>
+          </div>
+	  
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+  
+  <div class="member">
+    <div class="member-name">
+      <h2 id="Redeemer">
+        <a href="#Redeemer">
+	  Redeemer
+        </a>
+      </h2>
+      
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L118-L119"></a>
+      
+    </div>
+    <div class="custom-type-constructors">
+      <div class="rendered-markdown"><p>A type-alias for Redeemers, passed to scripts for validation. The <code>Data</code> is
+opaque because it is user-defined and it is the script’s responsibility to
+parse it into its expected form.</p>
+</div>
+      
+      <h3>Alias</h3>
+      <div class="constructor-row">
+        <svg class="icon icon-at"><use xlink:href="#icon-at"></use></svg>
+        <pre class="constructor-name"><code class="hljs aiken">Redeemer = Data</code></pre>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="member">
+    <div class="member-name">
+      <h2 id="ScriptPurpose">
+        <a href="#ScriptPurpose">
+	  ScriptPurpose
+        </a>
+      </h2>
+      
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L19-L47"></a>
+      
+    </div>
+    <div class="custom-type-constructors">
+      <div class="rendered-markdown"><p>Characterizes the script purpose.</p>
+</div>
+      
+      <h3>Constructors</h3>
+      <ul class="constructor-list">
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Mint(PolicyId)</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>For scripts executed as minting/burning policies, to insert
+or remove assets from circulation. It’s parameterized by the identifier
+of the associated policy.</p>
+
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Spend(OutputReference)</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>For scripts that are used as payment credentials for addresses in
+transaction outputs. They govern the rule by which the output they
+reference can be spent.</p>
+
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Withdraw(Credential)</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>For scripts that validate reward withdrawals from a reward account.</p>
+<p>The argument identifies the target reward account.</p>
+
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Publish { at: Index, certificate: Certificate }</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>Needed when delegating to a pool using stake credentials defined as a
+custom script. This purpose is also triggered when de-registering such
+stake credentials.</p>
+<p>The Int is a 0-based index of the given <code>Certificate</code> in <code>certificates</code>.</p>
+
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Vote(Voter)</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>Voting for a type of voter using a governance action id to vote
+yes / no / abstain inside a transaction.</p>
+<p>The voter is who is doing the governance action.</p>
+
+          </div>
+	  
+        </li>
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Propose { at: Index, proposal_procedure: ProposalProcedure }</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <p>Used to propose a governance action.</p>
+<p>A 0-based index of the given <code>ProposalProcedure</code> in <code>proposal_procedures</code>.</p>
+
+          </div>
+	  
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+  
+  <div class="member">
+    <div class="member-name">
+      <h2 id="Transaction">
+        <a href="#Transaction">
+	  Transaction
+        </a>
+      </h2>
+      
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L55-L78"></a>
+      
+    </div>
+    <div class="custom-type-constructors">
+      <div class="rendered-markdown"><p>A Cardano <code>Transaction</code>, as seen by on-chain scripts.</p>
+<p>Note that this is a representation of a transaction, and not the 1:1
+translation of the transaction as seen by the ledger. In particular,
+on-chain scripts can’t see inputs locked by bootstrap addresses, outputs
+to bootstrap addresses or just transaction metadata.</p>
+</div>
+      
+      <h3>Constructors</h3>
+      <ul class="constructor-list">
+        
+        <li class="constructor-item">
+          <div class="constructor-row">
+            <svg class="icon icon-box"><use xlink:href="#icon-box"></use></svg>
+            <pre class="constructor-name"><code class="hljs aiken">Transaction {
+  inputs: List&lt;Input&gt;,
+  reference_inputs: List&lt;Input&gt;,
+  outputs: List&lt;Output&gt;,
+  fee: Lovelace,
+  mint: Value,
+  certificates: List&lt;Certificate&gt;,
+  withdrawals: Pairs&lt;Credential, Lovelace&gt;,
+  validity_range: ValidityRange,
+  extra_signatories: List&lt;VerificationKeyHash&gt;,
+  redeemers: Pairs&lt;ScriptPurpose, Redeemer&gt;,
+  datums: Dict&lt;DataHash, Data&gt;,
+  id: TransactionId,
+  votes: Pairs&lt;Voter, Pairs&lt;GovernanceActionId, Vote&gt;&gt;,
+  proposal_procedures: List&lt;ProposalProcedure&gt;,
+  current_treasury_amount: Option&lt;Lovelace&gt;,
+  treasury_donation: Option&lt;Lovelace&gt;,
+}</code></pre>
+          </div>
+	  
+          <div class="constructor-item-docs">
+            <h4><code>.withdrawals</code></h4>
+<blockquote class="markdown-alert-important">
+<p>Withdrawals are ordered by ascending <a href="./credential.html#Credential">Credential</a>. Yet, note that <a href="./credential.html#Credential"><code>Script</code></a> credentials are treated as <strong>lower values</strong> than <a href="./credential.html#Credential"><code>VerificationKey</code></a> credentials.</p>
+</blockquote>
+<hr/>
+<h4><code>.redeemers</code></h4>
+<blockquote class="markdown-alert-important">
+<p>Redeemers are ordered by ascending <a href="./transaction.html#ScriptPurpose">ScriptPurpose</a>.</p>
+</blockquote>
+<hr/>
+<h4><code>.votes</code></h4>
+<blockquote class="markdown-alert-important">
+<p>Votes are ordered by ascending <a href="./governance.html#Voter">Voter</a> and <a href="./governance.html#GovernanceActionId">GovernanceActionId</a>.<br/>First constructor variants in a type are treated as lower indices; except for <a href="./credential.html#Credential">Credential</a> where <a href="./credential.html#Credential"><code>Script</code></a> credentials are treated as <strong>lower values</strong> than <a href="./credential.html#Credential"><code>VerificationKey</code></a> credentials.</p>
+</blockquote>
+<hr/>
+
+          </div>
+	  
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+  
+  <div class="member">
+    <div class="member-name">
+      <h2 id="TransactionId">
+        <a href="#TransactionId">
+	  TransactionId
+        </a>
+      </h2>
+      
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L15-L16"></a>
+      
+    </div>
+    <div class="custom-type-constructors">
+      <div class="rendered-markdown"></div>
+      
+      <h3>Alias</h3>
+      <div class="constructor-row">
+        <svg class="icon icon-at"><use xlink:href="#icon-at"></use></svg>
+        <pre class="constructor-name"><code class="hljs aiken">TransactionId = Hash&lt;Blake2b_256, Transaction&gt;</code></pre>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="member">
+    <div class="member-name">
+      <h2 id="ValidityRange">
+        <a href="#ValidityRange">
+	  ValidityRange
+        </a>
+      </h2>
+      
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L81-L82"></a>
+      
+    </div>
+    <div class="custom-type-constructors">
+      <div class="rendered-markdown"><p>An interval of POSIX time, measured in <strong>number of milliseconds</strong> since 1970-01-01T00:00:00Z.</p>
+</div>
+      
+      <h3>Alias</h3>
+      <div class="constructor-row">
+        <svg class="icon icon-at"><use xlink:href="#icon-at"></use></svg>
+        <pre class="constructor-name"><code class="hljs aiken">ValidityRange = Interval&lt;Int&gt;</code></pre>
+      </div>
       
     </div>
   </div>
@@ -646,28 +868,20 @@ milliseconds.</p>
   
   <div class="member">
     <div class="member-name">
-      <h2 id="empty"><pre class="hljs language-aiken">empty: Interval&lt;a&gt;</pre></h2>
+      <h2 id="placeholder"><pre class="hljs language-aiken">placeholder: Transaction</pre></h2>
       
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L196-L206"></a>
-      
-    </div>
-    <div class="rendered-markdown"><p>Create an empty interval that contains no value.</p>
-<pre><code class="language-aiken">interval.contains(empty, 0) == False
-interval.contains(empty, 1000) == False
-</code></pre>
-</div>
-  </div>
-  
-  <div class="member">
-    <div class="member-name">
-      <h2 id="everything"><pre class="hljs language-aiken">everything: Interval&lt;a&gt;</pre></h2>
-      
-        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L214-L224"></a>
+        <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L209-L227"></a>
       
     </div>
-    <div class="rendered-markdown"><p>Create an interval that contains every possible values. i.e. (-INF, +INF)</p>
-<pre><code class="language-aiken">interval.contains(everything, 0) == True
-interval.contains(everything, 1000) == True
+    <div class="rendered-markdown"><p>A placeholder / empty <code>Transaction</code> to serve as a base in a transaction
+builder. This is particularly useful for constructing test transactions.</p>
+<p>Every field is empty or null, and we have in particular:</p>
+<pre><code class="language-aiken">use aiken/interval
+
+transaction.placeholder.id ==
+  #"0000000000000000000000000000000000000000000000000000000000000000"
+
+transaction.placeholder.validity_range == interval.everything()
 </code></pre>
 </div>
   </div>
@@ -683,149 +897,31 @@ interval.contains(everything, 1000) == True
   
   
       
-        <h2 id="Constructing" class="module-heading"><a href="#Constructing">Constructing</a></h3>
+        <h2 id="Querying" class="module-heading"><a href="#Querying">Querying</a></h3>
       
   
   
   
       <div class="member">
         <div class="member-name">
-          <h2 id="after"><pre class="hljs language-aiken">after(lower_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
+          <h2 id="find_input"><pre class="hljs language-aiken">find_input(
+  inputs: List&lt;Input&gt;,
+  output_reference: OutputReference,
+) -&gt; Option&lt;Input&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L72-L83"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values greater than the given bound. i.e [lower_bound, +INF)</p>
-<pre><code class="language-aiken">interval.after(10) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: PositiveInfinity, is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="entirely_after"><pre class="hljs language-aiken">entirely_after(lower_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L93-L104"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L136-L142"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values after (and not including) the given bound. i.e (lower_bound, +INF)</p>
-<pre><code class="language-aiken">interval.entirely_after(10) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-  upper_bound: IntervalBound { bound_type: PositiveInfinity, is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="before"><pre class="hljs language-aiken">before(upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L114-L125"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values before (and including) the given bound. i.e (-INF, upper_bound]</p>
-<pre><code class="language-aiken">interval.before(100) == Interval {
-  lower_bound: IntervalBound { bound_type: NegativeInfinity, is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="entirely_before"><pre class="hljs language-aiken">entirely_before(upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L135-L146"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values before (and not including) the given bound. i.e (-INF, upper_bound)</p>
-<pre><code class="language-aiken">interval.entirely_before(10) == Interval {
-  lower_bound: IntervalBound { bound_type: NegativeInfinity, is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="between"><pre class="hljs language-aiken">between(lower_bound: a, upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L156-L167"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values between two bounds, including the bounds. i.e. [lower_bound, upper_bound]</p>
-<pre><code class="language-aiken">interval.between(10, 100) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: True },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: True },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="entirely_between"><pre class="hljs language-aiken">entirely_between(lower_bound: a, upper_bound: a) -&gt; Interval&lt;a&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L177-L188"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Create an interval that includes all values between two bounds, excluding the bounds. i.e. (lower_bound, upper_bound)</p>
-<pre><code class="language-aiken">interval.entirely_between(10, 100) == Interval {
-  lower_bound: IntervalBound { bound_type: Finite(10), is_inclusive: False },
-  upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: False },
-}
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      
-        <h2 id="Inspecting" class="module-heading"><a href="#Inspecting">Inspecting</a></h3>
-      
-  
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="contains"><pre class="hljs language-aiken">contains(self: Interval&lt;Int&gt;, elem: Int) -&gt; Bool</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L248-L274"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Checks whether an element is contained within the interval.</p>
-<pre><code class="language-aiken">let iv =
-  Interval {
-    lower_bound: IntervalBound {
-      bound_type: Finite(14),
-      is_inclusive: True
-    },
-    upper_bound: IntervalBound {
-      bound_type: Finite(42),
-      is_inclusive: False
-    },
+        <div class="rendered-markdown"><p>Find an input by its <a href="#OutputReference"><code>OutputReference</code></a>. This is typically used in
+combination with the <code>Spend</code> <a href="#ScriptPurpose"><code>ScriptPurpose</code></a> to find a script’s own
+input.</p>
+<pre><code class="language-aiken">validator {
+  spend(datum, redeemer, my_output_reference, self) {
+    expect Some(input) =
+      self.inputs
+        |&gt; transaction.find_input(my_output_reference)
   }
-
-interval.contains(iv, 25) == True
-interval.contains(iv, 0) == False
-interval.contains(iv, 14) == True
-interval.contains(iv, 42) == False
+}
 </code></pre>
 </div>
       </div>
@@ -834,31 +930,18 @@ interval.contains(iv, 42) == False
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_empty"><pre class="hljs language-aiken">is_empty(self: Interval&lt;Int&gt;) -&gt; Bool</pre></h2>
+          <h2 id="find_datum"><pre class="hljs language-aiken">find_datum(
+  outputs: List&lt;Output&gt;,
+  datums: Dict&lt;DataHash, Data&gt;,
+  datum_hash: DataHash,
+) -&gt; Option&lt;Data&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L358-L379"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L147-L175"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Tells whether an interval is empty; i.e. that is contains no value.</p>
-<pre><code class="language-aiken">let iv1 = interval.empty
-
-let iv2 = Interval {
-    lower_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-    upper_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-  }
-
-let iv3 = Interval {
-    lower_bound: IntervalBound { bound_type: Finite(0), is_inclusive: False },
-    upper_bound: IntervalBound { bound_type: Finite(100), is_inclusive: False },
-  }
-
-interval.is_empty(iv1) == True
-interval.is_empty(iv2) == True
-interval.is_empty(iv3) == False
-
-// Note: Two empty intervals are not necessarily equal.
-iv1 != iv2
-</code></pre>
+        <div class="rendered-markdown"><p>Find a <a href="#Datum"><code>Datum</code></a> by its hash, if present. The function looks first for
+datums in the witness set, and then for inline datums if it doesn’t find any in
+witnesses.</p>
 </div>
       </div>
     
@@ -866,127 +949,16 @@ iv1 != iv2
   
       <div class="member">
         <div class="member-name">
-          <h2 id="is_entirely_after"><pre class="hljs language-aiken">is_entirely_after(self: Interval&lt;Int&gt;, point: Int) -&gt; Bool</pre></h2>
+          <h2 id="find_script_outputs"><pre class="hljs language-aiken">find_script_outputs(
+  outputs: List&lt;Output&gt;,
+  script_hash: ScriptHash,
+) -&gt; List&lt;Output&gt;</pre></h2>
           
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L389-L399"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Check whether the interval is entirely after the point “a”</p>
-<pre><code class="language-aiken">interval.is_entirely_after(interval.after(10), 5) == True
-interval.is_entirely_after(interval.after(10), 10) == False
-interval.is_entirely_after(interval.after(10), 15) == False
-interval.is_entirely_after(interval.between(10, 20), 30) == False
-interval.is_entirely_after(interval.between(10, 20), 5) == True</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="is_entirely_before"><pre class="hljs language-aiken">is_entirely_before(self: Interval&lt;Int&gt;, point: Int) -&gt; Bool</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L445-L455"></a>
+      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/cardano/transaction.ak#L179-L192"></a>
           
         </div>
-        <div class="rendered-markdown"><p>Check whether the interval is entirely before the point “a”</p>
-<pre><code class="language-aiken">interval.is_entirely_before(interval.before(10), 15) == True
-interval.is_entirely_before(interval.before(10), 10) == False
-interval.is_entirely_before(interval.before(10), 5) == False
-interval.is_entirely_before(interval.between(10, 20), 30) == True
-interval.is_entirely_before(interval.between(10, 20), 5) == False</code></pre>
-</div>
-      </div>
-    
-  
-  
-      
-        <h2 id="Combining" class="module-heading"><a href="#Combining">Combining</a></h3>
-      
-  
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="hull"><pre class="hljs language-aiken">hull(iv1: Interval&lt;Int&gt;, iv2: Interval&lt;Int&gt;) -&gt; Interval&lt;Int&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L510-L515"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Computes the smallest interval containing the two given intervals, if any</p>
-<pre><code class="language-aiken">let iv1 = between(0, 10)
-let iv2 = between(2, 14)
-hull(iv1, iv2) == between(0, 14)
-
-let iv1 = between(5, 10)
-let iv2 = before(0)
-hull(iv1, iv2) == before(10)
-
-let iv1 = entirely_after(0)
-let iv2 = between(10, 42)
-hull(iv1, iv2) = entirely_after(0)
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="intersection"><pre class="hljs language-aiken">intersection(iv1: Interval&lt;Int&gt;, iv2: Interval&lt;Int&gt;) -&gt; Interval&lt;Int&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L550-L555"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Computes the largest interval contains in the two given intervals, if any.</p>
-<pre><code class="language-aiken">let iv1 = interval.between(0, 10)
-let iv2 = interval.between(2, 14)
-interval.intersection(iv1, iv2) == interval.between(2, 10)
-
-let iv1 = interval.entirely_before(10)
-let iv2 = interval.entirely_after(0)
-interval.intersection(iv1, iv2) == interval.entirely_between(0, 10)
-
-let iv1 = interval.between(0, 1)
-let iv2 = interval.between(2, 3)
-interval.intersection(iv1, iv2) |&gt; interval.is_empty
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="max"><pre class="hljs language-aiken">max(left: IntervalBound&lt;Int&gt;, right: IntervalBound&lt;Int&gt;) -&gt; IntervalBound&lt;Int&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L603-L612"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Return the highest bound of the two.</p>
-<pre><code class="language-aiken">let ib1 = IntervalBound { bound_type: Finite(0), is_inclusive: False }
-let ib2 = IntervalBound { bound_type: Finite(1), is_inclusive: False }
-
-interval.max(ib1, ib2) == ib2
-</code></pre>
-</div>
-      </div>
-    
-  
-  
-      <div class="member">
-        <div class="member-name">
-          <h2 id="min"><pre class="hljs language-aiken">min(left: IntervalBound&lt;Int&gt;, right: IntervalBound&lt;Int&gt;) -&gt; IntervalBound&lt;Int&gt;</pre></h2>
-          
-      	    <a class="member-source" alt="view source" title="view source" target="_blank" href="https://github.com/aiken-lang/stdlib/blob/main/lib/aiken/interval.ak#L622-L631"></a>
-          
-        </div>
-        <div class="rendered-markdown"><p>Return the smallest bound of the two.</p>
-<pre><code class="language-aiken">let ib1 = IntervalBound { bound_type: Finite(0), is_inclusive: False }
-let ib2 = IntervalBound { bound_type: Finite(1), is_inclusive: False }
-
-interval.min(ib1, ib2) == ib1
-</code></pre>
+        <div class="rendered-markdown"><p>Find all outputs that are paying into the given script hash, if any. This is useful for
+contracts running over multiple transactions.</p>
 </div>
       </div>
     
